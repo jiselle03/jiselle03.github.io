@@ -7,6 +7,7 @@ import GlobalStyles from './styles/Global';
 import { Main } from './styles/Layout';
 
 import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 import WelcomePage from './pages/WelcomePage';
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
               <Route exact path="/" component={WelcomePage}/>
             </Main>
           </Switch>
+          <Footer />
      </BrowserRouter>
     </ThemeProvider>
   );

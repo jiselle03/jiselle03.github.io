@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Header, Nav } from '../styles/Header';
-import { Title, Hyperlink } from '../styles/Typography';
+import { Header, Nav } from '../styles/Layout';
+import { Mark, Title, Hyperlink } from '../styles/Typography';
+import { links } from '../data';
 
 const NavBar = () => {
     return (
@@ -12,9 +13,11 @@ const NavBar = () => {
             </Title>
             <Nav>
                 <Title as="h2">
-                    <Hyperlink href="https://linkedin.com/in/jiselleliu">&nbsp; LinkedIn &nbsp;</Hyperlink> 
-                    <Hyperlink href="https://github.com/jiselle03">&nbsp; Github &nbsp;</Hyperlink>
-                    <Hyperlink href="mailto:hello@jiselleliu.com">&nbsp; Contact &nbsp;</Hyperlink>
+                    <Mark>
+                        {links.map(link => (
+                            <Hyperlink key={link.label} href={link.url} target="blank">&nbsp; {link.label} &nbsp;</Hyperlink> 
+                        ))}
+                    </Mark>
                 </Title>
             </Nav>
         </Header>

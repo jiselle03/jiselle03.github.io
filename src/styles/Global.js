@@ -14,35 +14,22 @@ const GlobalStyles = createGlobalStyle`
 
     body {
         background: ${({ theme }) => theme.background};
-        color: ${({ theme }) => theme.primary};
+        color: ${({ theme }) => theme.secondary};
     }
 
-    h1, h2, h3, h4, h5 {
-        font-family: ${({ theme }) => theme.title};        
-    }
+    h1 {
+        color: ${({ theme }) => theme.secondary};
+        font-family: ${({ theme }) => theme.title};
+        margin-bottom: 1rem;   
+        text-align: right;
 
-    h6, p, li {
+        @media screen and (min-width: 768px) {
+            margin-bottom: 2rem;  
+        }
+    } 
+
+    h2, h3, h4, h5, h6, p, li, small {
         font-family: ${({ theme }) => theme.text};
-    }
-
-    h6 {
-        font-weight: 700;
-        font-size: 1.75rem;
-    }
-
-    p, li {
-        font-weight: 400;
-        font-size: 1.5rem;
-    }
-
-    a {
-        font-family: inherit;
-        text-decoration: none;
-        color: ${({ theme }) => theme.primary};
-    }
-
-    ol, ul {
-        list-style: none;
     }
 
     h1 {
@@ -54,15 +41,48 @@ const GlobalStyles = createGlobalStyle`
     }
 
     h2 {
-        font-size: 2rem;
-    }
-
-    h2 {
         font-size: 1rem;
 
         @media screen and (min-width: 768px) {
             font-size: 1.75rem;
         }
+    }
+
+    h5 {
+        font-weight: 700;
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+
+    h6 {
+        font-weight: 700;
+        font-size: 1.25rem;
+    }
+
+    p, li {
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 2.25rem;
+        margin-bottom: 1rem;
+
+        @media screen and (min-width: 768px) {
+            font-size: 1.5rem;
+        }
+    }
+
+    small {
+        font-weight: 300;
+        font-size: 1rem;
+    }
+
+    a {
+        font-family: inherit;
+        color: ${({ theme }) => theme.primary};
+        text-decoration: none;
+    }
+
+    ol, ul {
+        list-style: none;
     }
 
     `;
