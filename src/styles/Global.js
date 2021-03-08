@@ -18,7 +18,6 @@ const GlobalStyles = createGlobalStyle`
     }
 
     h1 {
-        color: ${({ theme }) => theme.secondary};
         font-family: ${({ theme }) => theme.title};
         margin-bottom: 1rem;   
         text-align: right;
@@ -42,6 +41,15 @@ const GlobalStyles = createGlobalStyle`
 
     h2 {
         font-size: 1rem;
+        color: ${({ theme }) => theme.primary};
+
+        @media screen and (min-width: 768px) {
+            font-size: 2rem;
+        }
+    }
+
+    h3 {
+        font-size: 1rem;
 
         @media screen and (min-width: 768px) {
             font-size: 1.75rem;
@@ -56,7 +64,7 @@ const GlobalStyles = createGlobalStyle`
 
     h6 {
         font-weight: 700;
-        font-size: 1.25rem;
+        font-size: 1.1rem;
     }
 
     p, li {
@@ -90,5 +98,5 @@ const GlobalStyles = createGlobalStyle`
 export default GlobalStyles;
 
 GlobalStyles.propTypes = {
-    theme: object,
+    theme: object.isRequired,
 };

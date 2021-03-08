@@ -2,7 +2,7 @@
   "name": "jiselle03.github.io",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://jiselle03.github.io/jiselle03.github.io",
+  "homepage": "http://jiselle03.github.io/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",

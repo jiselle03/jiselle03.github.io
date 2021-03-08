@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { object } from 'prop-types';
 
 export const Header = styled.header`
     padding: 2rem;
@@ -18,12 +19,33 @@ export const Main = styled.main`
     max-width: 80vw;
 `;
 
+export const Section = styled.section`
+    margin: 1rem;
+    margin-bottom: 5rem;
+`;
+
 export const Footer = styled.footer`
-    margin: 2rem auto 0 auto;
-    padding: 2rem;
+    margin: 0 auto;
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     width: 45rem;
     max-width: 80vw;
 `;
 
+export const Container = styled.div`
+    margin: 1rem auto;
+`;
+
+export const Divider = styled.hr`
+    width: 60rem;
+    max-width: 90vw;
+    margin: auto;
+    border: ${({ theme }) => `2px solid ${theme.primary}`};  
+    border-radius: 5px;
+    opacity: 0.5;
+`;
+
+Divider.propTypes = {
+    theme: object,
+};
