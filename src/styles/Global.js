@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { object } from 'prop-types';
 
 const GlobalStyles = createGlobalStyle`
     html {
@@ -97,6 +96,3 @@ const GlobalStyles = createGlobalStyle`
 
 export default GlobalStyles;
 
-GlobalStyles.propTypes = {
-    theme: object.isRequired,
-};

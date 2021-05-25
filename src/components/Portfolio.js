@@ -10,6 +10,13 @@ const Portfolio = () => {
 
             <Container>
                 <Title as="h3">
+                    <Hyperlink href="https://mantisxr.com" target="blank">Mantis XR</Hyperlink>
+                </Title>
+                <Text as="small">jQuery, PHP, A-Frame, Node.js || React</Text>
+            </Container>
+
+            <Container>
+                <Title as="h3">
                     <Hyperlink href="https://youtube.com/watch?v=Co3HGeTybeE" target="blank">Techrollmancer</Hyperlink>
                 </Title>
                 <Text as="small">React, Ruby on Rails</Text>
@@ -36,6 +43,13 @@ const Portfolio = () => {
                     <Hyperlink href="https://medura.ca" target="blank">Medura</Hyperlink>
                 </Title>
                 <Text as="small">Shopify</Text>
+            </Container>
+
+            <Container>
+                <Title as="h3">
+                    <Hyperlink href="https://vetomaskspro.com" target="blank">Veto Masks Pro</Hyperlink>
+                </Title>
+                <Text as="small">Wix</Text>
             </Container>
 
             <Container>

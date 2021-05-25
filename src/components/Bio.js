@@ -5,7 +5,7 @@ import { Hyperlink, Text, Title } from '../styles/Typography';
 const Bio = () => {
     return (
         <>
-            <Title as="h5">Full stack web developer currently based in Vancouver, BC 🇨🇦</Title>
+            <Title as="h5">Full stack web developer currently based in Taipei</Title>
 
             <Text>
                 Former project manager and Bay Area resident, <br />
@@ -22,7 +22,7 @@ const Bio = () => {
                 Available for freelance opportunities at <Hyperlink href="mailto:hello@jiselleliu.com">hello@jiselleliu.com</Hyperlink>.
             </Text>
             <Text as="small">
-                JavaScript, Express, React, jQuery, Ruby on Rails, Python, Golang, Gorilla Mux, PostgreSQL, MongoDB, Knex.js, HTML, CSS, Wordpress, Shopify
+                JavaScript, Express, React, jQuery, Ruby on Rails, Python, Golang, Gorilla Mux, PostgreSQL, MongoDB, Knex.js, HTML, CSS, Wordpress, Shopify, Wix
             </Text>
         </>
     );
