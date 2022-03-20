@@ -21,7 +21,6 @@ const App = () => {
               <Route exact path="/" component={WelcomePage}/>
             </Main>
           </Switch>
-          <Footer />
      </BrowserRouter>
     </ThemeProvider>
   );

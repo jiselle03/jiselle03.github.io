@@ -15,14 +15,8 @@ const Bio = () => {
             <Text>
                 In my free time, I like playing around with web technologies and testing new recipes.
             </Text>
-            <Text>
-                My pronouns are she/they/他.
-            </Text>
-            <Text>
-                Available for freelance opportunities at <Hyperlink href="mailto:hello@jiselleliu.com">hello@jiselleliu.com</Hyperlink>.
-            </Text>
             <Text as="small">
-                JavaScript, Express, React, jQuery, Ruby on Rails, Python, Golang, Gorilla Mux, PostgreSQL, MongoDB, Knex.js, HTML, CSS, Wordpress, Shopify, Wix
+                JavaScript, Express, Vue, React, jQuery, Ruby on Rails, Golang, GraphQL, PostgreSQL, MongoDB, HTML, CSS
             </Text>
         </>
     );
