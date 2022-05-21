@@ -10,8 +10,10 @@ const AboutPage = () => {
         Web Developer, former project manager,&nbsp;
         <a href="https://berkeley.edu" target="blank">Cal</a> grad (Go Bears! 🐻).<br />
         D&D and sour ale enthusiast, Warriors fan. <br />
-        Currently building e-commerce and payment solutions for the freight industry at BlueX Trade.
+        Currently building freight e-commerce and payment solutions at BlueX Trade.
       </p>
+      <small>TECHNICAL SKILLS</small>
+      <p>TypeScript, Vue, React, Express, Ruby on Rails, Golang, PostGreSQL, MongoDB, HTML, CSS</p>
       <Divider />
       <Footer>
         <small>Jiselle Liu</small>
