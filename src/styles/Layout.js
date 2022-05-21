@@ -1,51 +1,62 @@
-import styled from 'styled-components';
-import { object } from 'prop-types';
+import styled from 'styled-components'
+import { object } from 'prop-types'
 
 export const Header = styled.header`
-    padding: 2rem;
-    max-width: 95vw;
-`;
+  margin: 2rem auto;
+  max-width: 80vw;
+`
 
 export const Nav = styled.nav`      
-    & > h2 {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-`;
+  & > h2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+`
 
 export const Main = styled.main`
-    margin: 2rem auto;
-    width: 45rem;
-    max-width: 80vw;
-`;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh - 4rem);
+  margin: 0 3rem;
+
+  @media screen and (min-width: 768px) {
+    max-width: 55vw;
+    margin: 0 5rem;
+  }
+`
+
+export const NavSection = styled.nav`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh - 4rem);
+  margin: 0 5rem;
+
+
+`
 
 export const Section = styled.section`
-    margin: 1rem;
-    margin-bottom: 5rem;
-`;
+  margin: 1rem;
+  margin-bottom: 3rem;
+`
 
 export const Footer = styled.footer`
-    margin: 0 auto;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    width: 45rem;
-    max-width: 80vw;
-`;
+  margin: 1rem 0 0 0;
+`
 
 export const Container = styled.div`
-    margin: 1rem auto;
-`;
+  margin: auto;
+`
 
 export const Divider = styled.hr`
-    width: 60rem;
-    max-width: 90vw;
-    margin: auto;
-    border: ${({ theme }) => `2px solid ${theme.primary}`};  
-    border-radius: 5px;
-    opacity: 0.5;
-`;
+  width: 60rem;
+  max-width: 30vw;
+  border: ${({ theme }) => `1px solid ${theme.primary}`};  
+  border-radius: 2px;
+  opacity: 0.5;
+`
 
 Divider.propTypes = {
-    theme: object,
-};
+  theme: object,
+}
