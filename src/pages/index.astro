@@ -13,6 +13,11 @@ const signals = [
   { label: 'Hum', value: 'Fitness tracking with calm progress loops' },
 ];
 
+const ownershipNotes = [
+  { label: 'Recent work', value: 'Product management plus implementation' },
+  { label: 'Forward engineering', value: 'Streamlining company workflows with pragmatic AI' },
+];
+
 const preferredStack = ['TypeScript', 'Next.js', 'React', 'tRPC', 'Drizzle', 'PostgreSQL', 'Tailwind', 'OpenAI', 'Radix UI', 'Vitest'];
 const alsoUsed = ['Vue', 'Ruby on Rails', 'Go', 'Express', 'MongoDB', 'React Query', 'Playwright'];
 ---
@@ -84,6 +89,15 @@ const alsoUsed = ['Vue', 'Ruby on Rails', 'Go', 'Express', 'MongoDB', 'React Que
         <div class="section-kicker">
           <p>Recent work</p>
           <h2 id="work-title">Product-heavy builds, frontend-first care.</h2>
+        </div>
+
+        <div class="ownership-strip" aria-label="Work style">
+          {ownershipNotes.map((item) => (
+            <p>
+              <span>{item.label}</span>
+              {item.value}
+            </p>
+          ))}
         </div>
 
         <div class="signal-grid">

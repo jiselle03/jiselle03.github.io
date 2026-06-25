@@ -343,6 +343,35 @@ h1 span:last-child {
   text-align: right;
 }
 
+.ownership-strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.ownership-strip p {
+  display: grid;
+  gap: 0.35rem;
+  min-height: 5.75rem;
+  padding: 1rem;
+  background: rgba(6, 17, 22, 0.48);
+  color: var(--ink);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 750;
+  line-height: 1.25;
+}
+
+.ownership-strip span {
+  color: var(--gold);
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .signal-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -485,6 +514,10 @@ h1 span:last-child {
 
   .section-kicker h2 {
     text-align: left;
+  }
+
+  .ownership-strip {
+    grid-template-columns: 1fr;
   }
 
   .site-header,
