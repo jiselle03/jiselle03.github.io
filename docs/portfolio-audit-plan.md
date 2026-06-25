@@ -7,10 +7,10 @@ Date: 2026-06-25
 The portfolio is now an Astro static site with one focused page:
 
 - Hero: concise positioning, contact/GitHub actions, and a CSS-only interface visual.
-- Recent work: NDA-safe project areas plus ownership/forward-engineering positioning.
+- Recent work: NDA-safe project areas, product development range, forward-engineering capability, and compact earlier-work categories.
 - Stack: preferred current stack separated from older/secondary tools.
 
-The page intentionally removes school/location/company bio details and keeps the signal on product ownership, frontend care, and recent build types.
+The page intentionally removes school/location/company bio details and keeps the signal on product development, UI/UX care, and recent build types.
 
 ## Stack Recommendation
 
@@ -68,7 +68,7 @@ The strongest improvement is restraint. It does not over-explain private work, d
 - Category: Content / UX
 - Impact: The page is credible as a calling card, but hiring readers may still want deeper proof of decision-making and shipped outcomes.
 - WCAG/Standard: Not applicable.
-- Recommendation: Add 1-2 NDA-safe case-study pages later: Hum can be public and detailed; tutoring/AI hiring can stay abstract with problem/approach/outcome language.
+- Recommendation: Add 1-2 NDA-safe case-study pages later: Hum can be public and detailed; tutoring and AI hiring can stay abstract with problem/approach/outcome language.
 - Suggested command: `$onboard`
 
 ### P3: External links do not announce new-tab behavior

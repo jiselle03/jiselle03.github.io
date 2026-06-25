@@ -4,22 +4,25 @@ import '../styles/global.css';
 const links = [
   { label: 'GitHub', href: 'https://github.com/jiselle03' },
   { label: 'LinkedIn', href: 'https://linkedin.com/in/jiselleliu' },
+  { label: 'Writing', href: 'https://www.timidmag.com/writers/jiselle-liu' },
   { label: 'Email', href: 'mailto:hello@jiselleliu.com' },
 ];
 
 const signals = [
-  { label: 'Tutoring', value: 'Scheduling, calendars, role-based operations' },
-  { label: 'AI hiring', value: 'Candidate workflows and decision support' },
-  { label: 'Hum', value: 'Fitness tracking with calm progress loops' },
+  { label: 'Tutoring Platform', value: 'Scheduling, attendance, learning resources' },
+  { label: 'AI Hiring Platform', value: 'Candidate workflows and decision support' },
+  { label: 'Fitness Tracker', value: 'Hum: calm progress loops for training and recovery' },
 ];
 
 const ownershipNotes = [
-  { label: 'Recent work', value: 'Owned product direction and shipped the build' },
+  { label: 'Product development', value: 'Owned product direction and shipped the build' },
   { label: 'Forward engineering', value: 'Streamlining company workflows with pragmatic AI' },
 ];
 
-const preferredStack = ['TypeScript', 'Next.js', 'React', 'tRPC', 'Drizzle', 'PostgreSQL', 'Tailwind', 'OpenAI', 'Radix UI', 'Vitest'];
-const alsoUsed = ['Claude Code', 'Anthropic', 'Vue', 'Ruby on Rails', 'Go', 'Express', 'MongoDB', 'React Query', 'Playwright'];
+const earlierWork = ['Freight payments, lending, and e-commerce tools', 'XR commerce experiences'];
+
+const preferredStack = ['TypeScript', 'Next.js', 'React', 'tRPC', 'Drizzle', 'PostgreSQL', 'Tailwind', 'OpenAI', 'Vitest'];
+const additionalExperience = ['Vue', 'Ruby on Rails', 'Go', 'Express', 'MongoDB', 'React Query', 'Playwright', 'Claude Code', 'Codex'];
 ---
 
 <!doctype html>
@@ -27,7 +30,7 @@ const alsoUsed = ['Claude Code', 'Anthropic', 'Vue', 'Ruby on Rails', 'Go', 'Exp
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Jiselle Liu, fullstack engineer with a frontend focus." />
+    <meta name="description" content="Jiselle Liu, fullstack engineer building useful software and careful interfaces." />
     <meta name="theme-color" content="#0b1d2a" />
     <link rel="icon" href="/icons/favicon_512.png" />
     <link rel="apple-touch-icon" href="/icons/favicon_512.png" />
@@ -55,14 +58,14 @@ const alsoUsed = ['Claude Code', 'Anthropic', 'Vue', 'Ruby on Rails', 'Go', 'Exp
     <main id="main" class="page-shell">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow">Fullstack engineer / frontend focus</p>
+          <p class="eyebrow">Fullstack engineer / product-minded builder</p>
           <h1 id="hero-title">
             <span>Useful software,</span>
             <span>careful interfaces.</span>
           </h1>
           <p class="lede">
-            I build across the stack, with a bias for the parts users touch:
-            scheduling tools, AI-assisted hiring workflows, and personal software that makes progress feel easier to see.
+            I build across the stack with close attention to the product surface:
+            the flows, states, copy, and interaction details that shape user experience.
           </p>
 
           <div class="hero-actions" aria-label="Primary links">
@@ -87,8 +90,7 @@ const alsoUsed = ['Claude Code', 'Anthropic', 'Vue', 'Ruby on Rails', 'Go', 'Exp
 
       <section class="work-section" aria-labelledby="work-title">
         <div class="section-kicker">
-          <p>Recent work</p>
-          <h2 id="work-title">Product-heavy builds, frontend-first care.</h2>
+          <h2 id="work-title">Recent work</h2>
         </div>
 
         <div class="ownership-strip" aria-label="Work style">
@@ -108,6 +110,15 @@ const alsoUsed = ['Claude Code', 'Anthropic', 'Vue', 'Ruby on Rails', 'Go', 'Exp
             </article>
           ))}
         </div>
+
+        <div class="earlier-work" aria-label="Earlier work">
+          <p>Earlier work</p>
+          <ul>
+            {earlierWork.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       <section class="stack-band" aria-label="Technology stack">
@@ -121,9 +132,9 @@ const alsoUsed = ['Claude Code', 'Anthropic', 'Vue', 'Ruby on Rails', 'Go', 'Exp
         </div>
 
         <div>
-          <p>Also used</p>
+          <p>Additional experience</p>
           <ul>
-            {alsoUsed.map((item) => (
+            {additionalExperience.map((item) => (
               <li>{item}</li>
             ))}
           </ul>

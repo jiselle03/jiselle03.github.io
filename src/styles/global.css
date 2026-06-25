@@ -319,28 +319,16 @@ h1 span:last-child {
 }
 
 .section-kicker {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 1.5rem;
   margin-bottom: 1rem;
 }
 
-.section-kicker p {
+.section-kicker h2 {
   color: var(--gold);
   font-size: 0.75rem;
   font-weight: 850;
   letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.section-kicker h2 {
-  max-width: 25rem;
-  color: var(--muted);
-  font-size: 1.1rem;
-  font-weight: 650;
   line-height: 1.4;
-  text-align: right;
+  text-transform: uppercase;
 }
 
 .ownership-strip {
@@ -408,6 +396,39 @@ h1 span:last-child {
   font-size: 2.15rem;
   font-weight: 700;
   line-height: 1.04;
+}
+
+.earlier-work {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: clamp(1rem, 4vw, 3rem);
+  padding-top: 1rem;
+}
+
+.earlier-work p {
+  color: var(--gold);
+  font-size: 0.75rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.earlier-work ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.earlier-work li {
+  padding: 0.48rem 0.72rem;
+  border: 1px solid var(--line);
+  color: rgba(167, 183, 186, 0.86);
+  background: rgba(248, 241, 222, 0.025);
+  font-size: 0.92rem;
 }
 
 .stack-band {
@@ -482,6 +503,7 @@ h1 span:last-child {
 @media (max-width: 860px) {
   .hero,
   .signal-grid,
+  .ownership-strip,
   .stack-band {
     grid-template-columns: 1fr;
   }
@@ -515,18 +537,13 @@ h1 span:last-child {
     justify-content: space-between;
   }
 
-  .section-kicker {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0.45rem;
-  }
-
-  .section-kicker h2 {
-    text-align: left;
-  }
-
   .ownership-strip {
     grid-template-columns: 1fr;
+  }
+
+  .earlier-work {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
   }
 
   .site-header,
