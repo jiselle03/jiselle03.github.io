@@ -147,11 +147,11 @@ h3 {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.58fr);
+  grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.5fr);
   align-items: center;
-  gap: clamp(2rem, 7vw, 6rem);
-  min-height: min(760px, calc(100svh - 5.5rem));
-  padding: clamp(4rem, 8vw, 7rem) 0;
+  gap: clamp(2rem, 6vw, 5rem);
+  min-height: min(620px, calc(100svh - 5.5rem));
+  padding: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(3rem, 5vw, 4.5rem);
 }
 
 .eyebrow {
@@ -165,32 +165,32 @@ h3 {
 
 h1 {
   display: grid;
-  max-width: 11ch;
-  margin-bottom: 1.5rem;
+  max-width: 12ch;
+  margin-bottom: 1.25rem;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(3.3rem, 9vw, 7.4rem);
+  font-size: 5.35rem;
   font-weight: 700;
   letter-spacing: 0;
-  line-height: 0.95;
+  line-height: 0.98;
 }
 
 h1 span:last-child {
-  color: transparent;
-  -webkit-text-stroke: 1px var(--ink);
+  color: rgba(248, 241, 222, 0.9);
+  -webkit-text-stroke: 0.5px rgba(248, 241, 222, 0.82);
   text-shadow: 0 0 28px rgba(253, 181, 21, 0.12);
 }
 
 .lede {
-  max-width: 39rem;
+  max-width: 37rem;
   color: var(--muted);
-  font-size: clamp(1.08rem, 2vw, 1.35rem);
+  font-size: 1.12rem;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 .button {
@@ -222,7 +222,7 @@ h1 span:last-child {
 
 .interface-board {
   position: relative;
-  min-height: 24rem;
+  min-height: 20rem;
   border: 1px solid var(--line);
   background:
     linear-gradient(135deg, rgba(248, 241, 222, 0.06), rgba(248, 241, 222, 0.01)),
@@ -337,7 +337,7 @@ h1 span:last-child {
 .section-kicker h2 {
   max-width: 25rem;
   color: var(--muted);
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: 1.1rem;
   font-weight: 650;
   line-height: 1.4;
   text-align: right;
@@ -359,7 +359,7 @@ h1 span:last-child {
   padding: 1rem;
   background: rgba(6, 17, 22, 0.48);
   color: var(--ink);
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: 1.1rem;
   font-weight: 750;
   line-height: 1.25;
 }
@@ -405,7 +405,7 @@ h1 span:last-child {
 .signal-card h3 {
   max-width: 14rem;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.55rem, 3vw, 2.35rem);
+  font-size: 2.15rem;
   font-weight: 700;
   line-height: 1.04;
 }
@@ -488,10 +488,19 @@ h1 span:last-child {
 
   .hero {
     min-height: auto;
+    padding: clamp(2.75rem, 8vw, 4rem) 0 clamp(3rem, 8vw, 4rem);
   }
 
   .interface-board {
-    min-height: 19rem;
+    min-height: 18rem;
+  }
+
+  h1 {
+    font-size: 4.3rem;
+  }
+
+  .signal-card h3 {
+    font-size: 1.9rem;
   }
 }
 
@@ -525,12 +534,22 @@ h1 span:last-child {
     width: min(var(--max-page), calc(100% - 1.25rem));
   }
 
-  h1 {
-    font-size: clamp(3rem, 17vw, 4.3rem);
+  .interface-board {
+    min-height: 15rem;
   }
 
-  .interface-board {
-    min-height: 17rem;
+  h1 {
+    font-size: 3.2rem;
+  }
+
+  .lede,
+  .section-kicker h2,
+  .ownership-strip p {
+    font-size: 1rem;
+  }
+
+  .signal-card h3 {
+    font-size: 1.65rem;
   }
 }
 
