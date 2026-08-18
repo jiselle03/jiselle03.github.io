@@ -2,6 +2,7 @@
 import '../styles/global.css';
 
 const links = [
+  { label: 'Demo', href: '/demo/vendor-readiness/' },
   { label: 'GitHub', href: 'https://github.com/jiselle03' },
   { label: 'LinkedIn', href: 'https://linkedin.com/in/jiselleliu' },
   { label: 'Writing', href: 'https://www.timidmag.com/writers/jiselle-liu' },
@@ -9,17 +10,17 @@ const links = [
 ];
 
 const signals = [
-  { label: 'Tutoring Platform', value: 'Scheduling, attendance, learning resources' },
-  { label: 'AI Hiring Platform', value: 'Candidate workflows and decision support' },
-  { label: 'Fitness Tracker', value: 'Hum: calm progress loops for training and recovery' },
+  { label: 'Operational portals', value: 'Roles, approvals, queues, and audit-friendly work' },
+  { label: 'AI-assisted workflows', value: 'Extraction, review, and recommendations with human oversight' },
+  { label: 'Product systems', value: 'Clear flows, integrations, and the details that make work stick' },
 ];
 
 const ownershipNotes = [
-  { label: 'Product development', value: 'Owned product direction and shipped the build' },
-  { label: 'Forward engineering', value: 'Streamlining company workflows with pragmatic AI' },
+  { label: 'Workflow discovery', value: 'Find the friction, define the right system, and make the next step clear' },
+  { label: 'Product delivery', value: 'Take a focused scope from working plan to production-quality software' },
 ];
 
-const earlierWork = ['Freight payments, lending, and e-commerce tools', 'XR commerce experiences'];
+const waysOfWorking = ['Fixed-scope builds', 'Pragmatic automation', 'Careful product surfaces'];
 
 const preferredStack = ['TypeScript', 'Next.js', 'React', 'tRPC', 'Drizzle', 'PostgreSQL', 'Tailwind', 'OpenAI', 'Vitest'];
 const additionalExperience = ['Vue', 'Ruby on Rails', 'Go', 'Express', 'MongoDB', 'React Query', 'Playwright', 'Claude Code', 'Codex'];
@@ -30,7 +31,7 @@ const additionalExperience = ['Vue', 'Ruby on Rails', 'Go', 'Express', 'MongoDB'
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Jiselle Liu, fullstack engineer building useful software and careful interfaces." />
+    <meta name="description" content="Jiselle Liu builds workflow software that helps teams turn busywork into usable systems." />
     <meta name="theme-color" content="#0b1d2a" />
     <link rel="icon" type="image/svg+xml" href="/icons/jl-mark.svg" />
     <link rel="alternate icon" href="/icons/favicon_512.png" />
@@ -59,19 +60,19 @@ const additionalExperience = ['Vue', 'Ruby on Rails', 'Go', 'Express', 'MongoDB'
     <main id="main" class="page-shell">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow">Fullstack engineer / product-minded builder</p>
+          <p class="eyebrow">Fullstack engineer / workflow systems</p>
           <h1 id="hero-title">
-            <span>Useful software,</span>
-            <span>careful interfaces.</span>
+            <span>Turn busywork</span>
+            <span>into usable systems.</span>
           </h1>
           <p class="lede">
-            I build across the stack with close attention to the product surface:
-            the flows, states, copy, and interaction details that shape user experience.
+            I help teams understand where work gets stuck, define a better process, and ship
+            the software or automation that makes it run.
           </p>
 
           <div class="hero-actions" aria-label="Primary links">
-            <a class="button button-primary" href="mailto:hello@jiselleliu.com">Contact</a>
-            <a class="button button-secondary" href="https://github.com/jiselle03" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="button button-primary" href="mailto:hello@jiselleliu.com?subject=Project%20inquiry">Start a project</a>
+            <a class="button button-secondary" href="/demo/vendor-readiness/">Try the demo</a>
           </div>
         </div>
 
@@ -91,7 +92,7 @@ const additionalExperience = ['Vue', 'Ruby on Rails', 'Go', 'Express', 'MongoDB'
 
       <section class="work-section" aria-labelledby="work-title">
         <div class="section-kicker">
-          <h2 id="work-title">Recent work</h2>
+          <h2 id="work-title">What I build</h2>
         </div>
 
         <div class="ownership-strip" aria-label="Work style">
@@ -112,10 +113,10 @@ const additionalExperience = ['Vue', 'Ruby on Rails', 'Go', 'Express', 'MongoDB'
           ))}
         </div>
 
-        <div class="earlier-work" aria-label="Earlier work">
-          <p>Earlier work</p>
+        <div class="earlier-work" aria-label="Ways of working">
+          <p>How I work</p>
           <ul>
-            {earlierWork.map((item) => (
+            {waysOfWorking.map((item) => (
               <li>{item}</li>
             ))}
           </ul>
