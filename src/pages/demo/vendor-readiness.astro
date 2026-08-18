@@ -1,0 +1,363 @@
+---
+import '../../styles/vendor-readiness.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A fictional vendor readiness dashboard concept by Jiselle Liu." />
+    <meta name="theme-color" content="#eff2ec" />
+    <title>Vendor Readiness | Independent Product Demo</title>
+  </head>
+  <body class="vendor-demo-body">
+    <a class="vendor-skip" href="#workspace">Skip to workspace</a>
+    <main id="workspace" class="vendor-app">
+      <aside class="app-sidebar" aria-label="Product navigation">
+        <a class="app-brand" href="/demo/vendor-readiness/" aria-label="Northline vendor readiness home">
+          <span class="app-mark" aria-hidden="true">N</span>
+          <span>Northline</span>
+        </a>
+        <p class="workspace-name">Vendor readiness</p>
+        <nav class="app-nav" aria-label="Workspace sections">
+          <a class="is-current" href="#dashboard" aria-current="page">Overview</a>
+          <a href="#vendor-portfolio">Vendors</a>
+          <a href="#readiness-panel">Evidence review</a>
+          <a href="#activity-panel">Decision log</a>
+        </nav>
+        <div class="sidebar-note">
+          <span class="demo-pill">Fictional demo</span>
+          <p>Independent browser-only concept. No client data, backend, or AI.</p>
+        </div>
+      </aside>
+
+      <section class="app-content">
+        <header class="app-topbar">
+          <div>
+            <p class="app-kicker">Procurement operations / Q3 readiness</p>
+            <h1>Vendor portfolio</h1>
+          </div>
+          <div class="topbar-actions">
+            <button id="show-tour" class="help-button" type="button">How it works</button>
+            <span class="team-avatar">OP</span>
+            <a class="back-link" href="/">Jiselle Liu</a>
+          </div>
+        </header>
+
+        <section id="dashboard" class="dashboard-intro" aria-labelledby="dashboard-title">
+          <div>
+            <p class="section-label">Portfolio health</p>
+            <h2 id="dashboard-title">Know what is ready, blocked, and waiting on a decision.</h2>
+          </div>
+          <p>This fictional workspace demonstrates a role-aware approval flow: the intake is structured, evidence is visible, and decisions do not disappear into email.</p>
+        </section>
+
+        <section class="scenario-strip" aria-labelledby="scenario-title">
+          <div>
+            <p class="section-label">Operating scenario</p>
+            <h2 id="scenario-title">Northline is opening five locations in 30 days.</h2>
+            <p>Procurement, finance, and operations must approve every vendor from the same evidence record before a location can open.</p>
+          </div>
+          <dl>
+            <div><dt>Risk without a system</dt><dd>Approvals and missing documents are spread across inboxes.</dd></div>
+            <div><dt>What this workspace changes</dt><dd>Every handoff has an owner, stage, evidence trail, and decision.</dd></div>
+          </dl>
+        </section>
+
+        <section class="metric-grid" aria-label="Portfolio metrics">
+          <article class="metric-card">
+            <p>Ready to activate</p>
+            <strong id="approved-count">2</strong>
+            <span class="metric-change positive">+1 this week</span>
+          </article>
+          <article class="metric-card">
+            <p>Evidence completion</p>
+            <strong id="completion-rate">78%</strong>
+            <span class="metric-change">Across active vendors</span>
+          </article>
+          <article class="metric-card risk-card">
+            <p>At-risk reviews</p>
+            <strong id="risk-count">2</strong>
+            <span class="metric-change risk">Needs a decision today</span>
+          </article>
+          <article class="metric-card">
+            <p>Median cycle time</p>
+            <strong>6.4d</strong>
+            <span class="metric-change">Intake to approval</span>
+          </article>
+        </section>
+
+        <section class="insight-grid" aria-label="Portfolio insights">
+          <article class="chart-panel">
+            <div class="panel-heading">
+              <div><p class="section-label">Readiness trend</p><h2>Activation confidence</h2></div>
+              <span>Last 6 weeks</span>
+            </div>
+            <div class="bar-chart" aria-label="Readiness increased from 42 percent to 78 percent over six weeks">
+              <div><span style="height: 42%"></span><small>W1</small></div>
+              <div><span style="height: 54%"></span><small>W2</small></div>
+              <div><span style="height: 49%"></span><small>W3</small></div>
+              <div><span style="height: 63%"></span><small>W4</small></div>
+              <div><span style="height: 71%"></span><small>W5</small></div>
+              <div class="bar-current"><span style="height: 78%"></span><small>Now</small></div>
+            </div>
+          </article>
+          <article class="decision-panel">
+            <p class="section-label">Decision gate</p>
+            <h2>Two renewals lack a named approver.</h2>
+            <p>Assigning an accountable reviewer converts an ambiguous handoff into a trackable decision.</p>
+            <button id="focus-risk" type="button">Show at-risk vendors</button>
+          </article>
+        </section>
+
+        <section id="vendor-portfolio" class="workspace-grid" aria-label="Vendor workspace">
+          <section class="vendor-list-panel">
+            <div class="panel-heading">
+              <div><p class="section-label">Active portfolio</p><h2>Vendors</h2></div>
+              <div class="list-filters" aria-label="Vendor filters">
+                <button class="list-filter is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+                <button class="list-filter" type="button" data-filter="at-risk" aria-pressed="false" aria-label="Show at-risk vendors" title="At-risk vendors">Risk</button>
+                <button class="list-filter" type="button" data-filter="approved" aria-pressed="false" aria-label="Show approved vendors" title="Approved vendors">Ready</button>
+              </div>
+            </div>
+            <div id="vendor-list" class="vendor-list" aria-live="polite"></div>
+          </section>
+
+          <section id="readiness-panel" class="readiness-panel" aria-labelledby="vendor-name">
+            <div class="selected-vendor-header">
+              <div>
+                <p id="vendor-category" class="section-label"></p>
+                <h2 id="vendor-name">Select a vendor</h2>
+                <p id="vendor-summary"></p>
+              </div>
+              <span id="vendor-risk" class="risk-badge"></span>
+            </div>
+            <div id="vendor-controls" hidden>
+              <div class="readiness-overview">
+                <div>
+                  <p class="section-label">Readiness</p>
+                  <strong id="vendor-progress">0%</strong>
+                </div>
+                <div class="progress-track" aria-label="Vendor readiness progress"><span id="vendor-progress-bar"></span></div>
+                <p id="vendor-progress-copy"></p>
+              </div>
+
+              <div class="field-grid">
+                <label>Workflow owner<select id="vendor-owner"><option>Maya Chen</option><option>Leo Park</option><option>Rina Shah</option><option>Unassigned</option></select></label>
+                <label>Approval stage<select id="vendor-stage"><option>Intake</option><option>Evidence review</option><option>Risk review</option><option>Approved</option></select></label>
+              </div>
+
+              <section class="stage-rail" aria-label="Vendor onboarding stages">
+                <div><span>1</span><p>Intake</p></div><div><span>2</span><p>Evidence</p></div><div><span>3</span><p>Risk</p></div><div><span>4</span><p>Activate</p></div>
+              </section>
+
+              <section class="evidence-section" aria-labelledby="evidence-title">
+                <div class="panel-heading"><div><p class="section-label">Evidence review</p><h3 id="evidence-title">Required before activation</h3></div><span id="evidence-status"></span></div>
+                <div id="evidence-list" class="evidence-list"></div>
+              </section>
+
+              <div class="decision-actions">
+                <button id="save-vendor" class="secondary-action" type="button">Save workflow changes</button>
+                <button id="approve-vendor" class="primary-action" type="button">Approve activation</button>
+              </div>
+            </div>
+          </section>
+
+          <aside id="activity-panel" class="activity-panel" aria-labelledby="activity-title">
+            <p class="section-label">Decision log</p>
+            <h2 id="activity-title">Why it changed</h2>
+            <ol id="activity-list"></ol>
+          </aside>
+        </section>
+
+        <footer class="demo-footer">Designed as a fictional product concept by <a href="/">Jiselle Liu</a>. Try reviewing evidence, assigning an owner, or approving a ready vendor.</footer>
+      </section>
+    </main>
+
+    <dialog id="tour-dialog" class="tour-dialog" aria-labelledby="tour-title">
+      <div class="tour-card">
+        <p id="tour-step" class="section-label">Guided flow / Step 1 of 3</p>
+        <h2 id="tour-title">Start with a vendor that cannot move forward.</h2>
+        <p id="tour-copy">Open the at-risk queue to see the record that is missing required evidence.</p>
+        <div class="tour-actions">
+          <button id="tour-dismiss" class="tour-dismiss" type="button">Dismiss tour</button>
+          <button id="tour-primary" class="tour-start" type="button">Start guided tour</button>
+        </div>
+      </div>
+    </dialog>
+    <aside id="tour-popover" class="tour-popover" aria-live="polite" hidden>
+      <p id="tour-popover-step" class="section-label"></p>
+      <strong id="tour-popover-title"></strong>
+      <p id="tour-popover-copy"></p>
+      <button id="dismiss-popover-tour" type="button">Dismiss tour</button>
+    </aside>
+
+    <script>
+      type Evidence = { name: string; reviewed: boolean };
+      type Vendor = { id: number; name: string; category: string; summary: string; owner: string; stage: string; risk: string; evidence: Evidence[]; activity: string[] };
+      const vendors: Vendor[] = [
+        { id: 1, name: 'Porter & Beam', category: 'Facilities / regional supplier', summary: 'Expansion supplier for five new locations. Finance review is complete.', owner: 'Maya Chen', stage: 'Risk review', risk: 'At risk', evidence: [{ name: 'Tax registration', reviewed: true }, { name: 'Insurance certificate', reviewed: true }, { name: 'Service-level schedule', reviewed: false }], activity: ['Finance cleared payment terms', 'Maya Chen requested service-level evidence', 'Risk review opened'] },
+        { id: 2, name: 'Cedar Freight', category: 'Logistics / national carrier', summary: 'Existing carrier renewal with expiring insurance documentation.', owner: 'Unassigned', stage: 'Evidence review', risk: 'At risk', evidence: [{ name: 'Insurance certificate', reviewed: false }, { name: 'Rate card', reviewed: true }, { name: 'Data-processing addendum', reviewed: true }], activity: ['Renewal opened', 'Existing rate card confirmed', 'Owner required before review can close'] },
+        { id: 3, name: 'Harbor Works', category: 'Manufacturing / packaging', summary: 'New packaging partner for the winter product line.', owner: 'Rina Shah', stage: 'Approved', risk: 'Ready', evidence: [{ name: 'Supplier profile', reviewed: true }, { name: 'Quality statement', reviewed: true }, { name: 'Payment details', reviewed: true }], activity: ['Evidence review completed', 'Rina Shah approved activation', 'Vendor activated for Q4'] },
+        { id: 4, name: 'Morrow Studio', category: 'Creative services / campaign partner', summary: 'Approved creative partner with scoped project access.', owner: 'Leo Park', stage: 'Approved', risk: 'Ready', evidence: [{ name: 'Statement of work', reviewed: true }, { name: 'Security acknowledgement', reviewed: true }, { name: 'Payment details', reviewed: true }], activity: ['Scope confirmed', 'Security acknowledgement reviewed', 'Vendor approved'] },
+      ];
+
+      let selectedId = 1;
+      let activeFilter = 'all';
+      const getElement = <T extends HTMLElement>(selector: string) => { const element = document.querySelector<T>(selector); if (!element) throw new Error(`Missing required element: ${selector}`); return element; };
+      const vendorList = getElement<HTMLDivElement>('#vendor-list');
+      const vendorName = getElement<HTMLHeadingElement>('#vendor-name');
+      const vendorCategory = getElement<HTMLParagraphElement>('#vendor-category');
+      const vendorSummary = getElement<HTMLParagraphElement>('#vendor-summary');
+      const vendorRisk = getElement<HTMLSpanElement>('#vendor-risk');
+      const controls = getElement<HTMLDivElement>('#vendor-controls');
+      const progress = getElement<HTMLElement>('#vendor-progress');
+      const progressBar = getElement<HTMLElement>('#vendor-progress-bar');
+      const progressCopy = getElement<HTMLParagraphElement>('#vendor-progress-copy');
+      const owner = getElement<HTMLSelectElement>('#vendor-owner');
+      const stage = getElement<HTMLSelectElement>('#vendor-stage');
+      const evidenceList = getElement<HTMLDivElement>('#evidence-list');
+      const evidenceStatus = getElement<HTMLSpanElement>('#evidence-status');
+      const activityList = getElement<HTMLOListElement>('#activity-list');
+      const approvedCount = getElement<HTMLElement>('#approved-count');
+      const completionRate = getElement<HTMLElement>('#completion-rate');
+      const riskCount = getElement<HTMLElement>('#risk-count');
+      const saveVendor = getElement<HTMLButtonElement>('#save-vendor');
+      const approveVendor = getElement<HTMLButtonElement>('#approve-vendor');
+      const focusRisk = getElement<HTMLButtonElement>('#focus-risk');
+      const showTour = getElement<HTMLButtonElement>('#show-tour');
+      const tourDialog = getElement<HTMLDialogElement>('#tour-dialog');
+      const tourStepLabel = getElement<HTMLParagraphElement>('#tour-step');
+      const tourTitle = getElement<HTMLHeadingElement>('#tour-title');
+      const tourCopy = getElement<HTMLParagraphElement>('#tour-copy');
+      const tourPrimary = getElement<HTMLButtonElement>('#tour-primary');
+      const tourDismiss = getElement<HTMLButtonElement>('#tour-dismiss');
+      const tourPopover = getElement<HTMLElement>('#tour-popover');
+      const tourPopoverStep = getElement<HTMLParagraphElement>('#tour-popover-step');
+      const tourPopoverTitle = getElement<HTMLElement>('#tour-popover-title');
+      const tourPopoverCopy = getElement<HTMLParagraphElement>('#tour-popover-copy');
+      const dismissPopoverTour = getElement<HTMLButtonElement>('#dismiss-popover-tour');
+      const filters = document.querySelectorAll<HTMLButtonElement>('.list-filter');
+      let tourStep = 0;
+      let tourActive = false;
+      let tourTarget: HTMLElement | null = null;
+      const tourSteps = [
+        { label: 'Guided flow / Step 1 of 3', title: 'Follow one vendor from blocker to approval.', copy: 'The tour will take you to each decision point. You can dismiss it at any time and explore independently.', action: 'Start guided tour' },
+        { label: 'Guided flow / Complete', title: 'The vendor is ready to activate.', copy: 'The evidence, owner, and approval are now captured in one visible record. Explore the rest of the portfolio.', action: 'Explore dashboard' },
+      ];
+
+      const selectedVendor = () => vendors.find((vendor) => vendor.id === selectedId);
+      const percentage = (vendor: Vendor) => Math.round((vendor.evidence.filter((item) => item.reviewed).length / vendor.evidence.length) * 100);
+      const visibleVendors = () => vendors.filter((vendor) => activeFilter === 'all' || (activeFilter === 'at-risk' && vendor.risk === 'At risk') || (activeFilter === 'approved' && vendor.stage === 'Approved'));
+      const updateMetrics = () => {
+        const totalEvidence = vendors.flatMap((vendor) => vendor.evidence);
+        approvedCount.textContent = String(vendors.filter((vendor) => vendor.stage === 'Approved').length);
+        completionRate.textContent = `${Math.round((totalEvidence.filter((item) => item.reviewed).length / totalEvidence.length) * 100)}%`;
+        riskCount.textContent = String(vendors.filter((vendor) => vendor.risk === 'At risk').length);
+      };
+      const renderList = () => {
+        vendorList.replaceChildren();
+        visibleVendors().forEach((vendor) => {
+          const button = document.createElement('button');
+          button.type = 'button'; button.className = `vendor-row${vendor.id === selectedId ? ' is-selected' : ''}`;
+          button.addEventListener('click', () => { selectedId = vendor.id; render(); });
+          const top = document.createElement('span'); top.className = 'vendor-row-top'; top.textContent = vendor.category;
+          const name = document.createElement('strong'); name.textContent = vendor.name;
+          const bottom = document.createElement('span'); bottom.className = 'vendor-row-bottom'; bottom.textContent = `${percentage(vendor)}% complete / ${vendor.owner}`;
+          const risk = document.createElement('span'); risk.className = `row-risk ${vendor.risk === 'At risk' ? 'is-risk' : 'is-ready'}`; risk.textContent = vendor.risk;
+          button.append(top, name, bottom, risk); vendorList.append(button);
+        });
+      };
+      const renderVendor = () => {
+        const vendor = selectedVendor(); if (!vendor) return;
+        const completion = percentage(vendor);
+        vendorName.textContent = vendor.name; vendorCategory.textContent = vendor.category; vendorSummary.textContent = vendor.summary;
+        vendorRisk.textContent = vendor.risk; vendorRisk.className = `risk-badge ${vendor.risk === 'At risk' ? 'is-risk' : 'is-ready'}`;
+        controls.hidden = false; owner.value = vendor.owner; stage.value = vendor.stage;
+        progress.textContent = `${completion}%`; progressBar.style.width = `${completion}%`; progressCopy.textContent = `${vendor.evidence.filter((item) => item.reviewed).length} of ${vendor.evidence.length} evidence requirements reviewed`;
+        evidenceStatus.textContent = `${vendor.evidence.filter((item) => item.reviewed).length}/${vendor.evidence.length} reviewed`;
+        evidenceList.replaceChildren(); vendor.evidence.forEach((item) => {
+          const row = document.createElement('div'); row.className = `evidence-row${item.reviewed ? ' is-reviewed' : ''}`;
+          const details = document.createElement('div'); const title = document.createElement('strong'); title.textContent = item.name; const state = document.createElement('span'); state.textContent = item.reviewed ? 'Reviewed' : 'Awaiting review'; details.append(title, state);
+          const action = document.createElement('button'); action.type = 'button'; action.textContent = item.reviewed ? 'Reviewed' : 'Review'; action.disabled = item.reviewed;
+          action.addEventListener('click', () => { item.reviewed = true; vendor.activity.push(`${item.name} reviewed`); render(); if (tourActive && tourStep === 1 && vendor.id === 1) { tourStep = 2; showGuide(approveVendor, 'Step 2 of 3', 'Approve activation', 'The record is now complete. Approve activation to close the workflow.'); } });
+          row.append(details, action); evidenceList.append(row);
+        });
+        activityList.replaceChildren(); vendor.activity.slice().reverse().forEach((entry) => { const item = document.createElement('li'); item.textContent = entry; activityList.append(item); });
+      };
+      const render = () => { renderList(); renderVendor(); updateMetrics(); };
+      filters.forEach((button) => button.addEventListener('click', () => { activeFilter = button.dataset.filter || 'all'; filters.forEach((item) => { const isActive = item === button; item.classList.toggle('is-active', isActive); item.setAttribute('aria-pressed', String(isActive)); }); const first = visibleVendors()[0]; if (first) selectedId = first.id; render(); }));
+      saveVendor.addEventListener('click', () => { const vendor = selectedVendor(); if (!vendor) return; if (vendor.owner !== owner.value) { vendor.owner = owner.value; vendor.activity.push(`Workflow owner set to ${vendor.owner}`); } if (vendor.stage !== stage.value) { vendor.stage = stage.value; vendor.activity.push(`Approval stage moved to ${vendor.stage}`); } render(); });
+      approveVendor.addEventListener('click', () => { const vendor = selectedVendor(); if (!vendor) return; if (percentage(vendor) < 100 || vendor.owner === 'Unassigned') { vendor.activity.push('Activation blocked: evidence and owner are required'); render(); return; } vendor.stage = 'Approved'; vendor.risk = 'Ready'; vendor.activity.push('Vendor approved for activation'); render(); if (tourActive && tourStep === 2 && vendor.id === 1) { stopTour(); showTourStep(1); tourDialog.showModal(); } });
+      focusRisk.addEventListener('click', () => { activeFilter = 'at-risk'; filters.forEach((item) => { const isActive = item.dataset.filter === 'at-risk'; item.classList.toggle('is-active', isActive); item.setAttribute('aria-pressed', String(isActive)); }); const riskFilter = Array.from(filters).find((item) => item.dataset.filter === 'at-risk'); const first = visibleVendors()[0]; if (first) selectedId = first.id; document.querySelector('#vendor-portfolio')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); riskFilter?.focus(); render(); });
+      render();
+      const positionGuide = () => {
+        if (!tourTarget || tourPopover.hidden) return;
+        const bounds = tourTarget.getBoundingClientRect();
+        const maxLeft = window.innerWidth - tourPopover.offsetWidth - 16;
+        const left = Math.max(16, Math.min(bounds.left, maxLeft));
+        const top = bounds.bottom + 12 > window.innerHeight - tourPopover.offsetHeight ? Math.max(16, bounds.top - tourPopover.offsetHeight - 12) : bounds.bottom + 12;
+        tourPopover.style.left = `${left}px`;
+        tourPopover.style.top = `${top}px`;
+      };
+      const showGuide = (target: HTMLElement, step: string, title: string, copy: string) => {
+        tourTarget?.classList.remove('tour-target');
+        tourTarget = target;
+        tourTarget.classList.add('tour-target');
+        tourPopoverStep.textContent = step;
+        tourPopoverTitle.textContent = title;
+        tourPopoverCopy.textContent = copy;
+        tourPopover.hidden = false;
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        window.setTimeout(positionGuide, 350);
+      };
+      const stopTour = () => {
+        tourActive = false;
+        tourTarget?.classList.remove('tour-target');
+        tourTarget = null;
+        tourPopover.hidden = true;
+      };
+      const beginTour = () => {
+        const guidedVendor = vendors.find((vendor) => vendor.id === 1);
+        if (guidedVendor) {
+          guidedVendor.owner = 'Maya Chen';
+          guidedVendor.stage = 'Risk review';
+          guidedVendor.risk = 'At risk';
+          guidedVendor.evidence = [
+            { name: 'Tax registration', reviewed: true },
+            { name: 'Insurance certificate', reviewed: true },
+            { name: 'Service-level schedule', reviewed: false },
+          ];
+          guidedVendor.activity = [
+            'Finance cleared payment terms',
+            'Maya Chen requested service-level evidence',
+            'Risk review opened',
+          ];
+          selectedId = guidedVendor.id;
+          render();
+        }
+        tourActive = true;
+        tourStep = 1;
+        tourDialog.close();
+        focusRisk.click();
+        window.setTimeout(() => {
+          const reviewButton = evidenceList.querySelector<HTMLButtonElement>('button:not([disabled])');
+          if (reviewButton) showGuide(reviewButton, 'Step 1 of 3', 'Review the missing evidence', 'Review the service-level schedule so this vendor can move to approval.');
+        }, 400);
+      };
+      showTour.addEventListener('click', () => { stopTour(); showTourStep(0); tourDialog.showModal(); });
+      const showTourStep = (step: number) => { const current = tourSteps[step]; tourStepLabel.textContent = current.label; tourTitle.textContent = current.title; tourCopy.textContent = current.copy; tourPrimary.textContent = current.action; };
+      tourPrimary.addEventListener('click', () => {
+        if (tourStep === 0) { beginTour(); return; }
+        tourDialog.close();
+      });
+      tourDismiss.addEventListener('click', () => { stopTour(); tourDialog.close(); });
+      dismissPopoverTour.addEventListener('click', stopTour);
+      window.addEventListener('resize', positionGuide);
+      window.addEventListener('scroll', positionGuide, { passive: true });
+      showTourStep(0);
+      tourDialog.showModal();
+    </script>
+  </body>
+</html>
