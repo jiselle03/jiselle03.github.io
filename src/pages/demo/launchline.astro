@@ -1,0 +1,97 @@
+---
+import '../../styles/launchline.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Launchline is a fictional frontend-only launch operations dashboard concept by Jiselle Liu." />
+    <meta name="theme-color" content="#10233f" />
+    <title>Launchline | Independent Product Demo</title>
+  </head>
+  <body class="launchline-body">
+    <a class="ll-skip" href="#launch-portfolio">Skip to launch portfolio</a>
+    <main class="ll-app">
+      <aside class="ll-sidebar" aria-label="Launchline navigation">
+        <a class="ll-brand" href="/demo/launchline/"><span aria-hidden="true">L</span> Launchline</a>
+        <p class="ll-workspace">Regional operations</p>
+        <nav class="ll-nav" aria-label="Product sections">
+          <a href="#overview" aria-current="page">Command center</a>
+          <a href="#launch-portfolio">Launch portfolio</a>
+          <a href="#selected-launch">Location workspace</a>
+          <a href="#role-inbox">Role inbox</a>
+        </nav>
+        <div class="ll-sidebar-note"><span>Fictional demo</span><p>Independent, frontend-only product concept. No client data or backend.</p></div>
+      </aside>
+
+      <section class="ll-content">
+        <header class="ll-topbar">
+          <div><p>Q3 opening program / Northeast</p><h1>Launch command center</h1></div>
+          <div><button id="focus-attention" class="ll-quiet-button" type="button">Show blockers</button><a href="/">Jiselle Liu</a></div>
+        </header>
+
+        <section id="overview" class="ll-intro" aria-labelledby="intro-title">
+          <div><p class="ll-label">Launchline in action</p><h2 id="intro-title">Make every opening dependency visible before it becomes a missed date.</h2></div>
+          <p>A regional launch manager coordinates facilities, training, finance, and operations from one shared view. The data is fictional; the workflow is designed to show the kind of operational system this portfolio can deliver.</p>
+        </section>
+
+        <section class="ll-scenario" aria-label="Operating scenario">
+          <div><p class="ll-label">Operating scenario</p><strong>Five locations open in the next six weeks.</strong><span>A delivery conflict is putting Harbor Point's training plan at risk.</span></div>
+          <dl><div><dt>Without a system</dt><dd>Changes hide across calendars, spreadsheets, and inboxes.</dd></div><div><dt>With Launchline</dt><dd>One record connects the blocker, owner, schedule, and decision.</dd></div></dl>
+        </section>
+
+        <section class="ll-metrics" aria-label="Launch metrics">
+          <article><p>On track</p><strong id="on-track-count">3</strong><span>of 5 planned openings</span></article>
+          <article><p>Needs attention</p><strong id="attention-count">2</strong><span>one decision due today</span></article>
+          <article><p>Tasks complete</p><strong id="task-rate">76%</strong><span>across active launch plans</span></article>
+          <article><p>Approval coverage</p><strong id="approval-rate">60%</strong><span>locations with a recorded decision</span></article>
+        </section>
+
+        <section class="ll-insights" aria-label="Program insights">
+          <article class="ll-chart"><div class="ll-panel-heading"><div><p class="ll-label">Readiness trend</p><h2>Program confidence</h2></div><span>6 weeks</span></div><div class="ll-bars" aria-label="Readiness trend from 48 to 76 percent"><div><i style="height:48%"></i><small>W1</small></div><div><i style="height:56%"></i><small>W2</small></div><div><i style="height:61%"></i><small>W3</small></div><div><i style="height:66%"></i><small>W4</small></div><div><i style="height:72%"></i><small>W5</small></div><div class="is-current"><i style="height:76%"></i><small>Now</small></div></div></article>
+          <article class="ll-decision"><p class="ll-label">Next decision</p><h2>Harbor Point has a delivery conflict.</h2><p>Review the impacted training session and assign the mitigation owner before Thursday.</p><button id="open-harbor" type="button">Open Harbor Point</button></article>
+        </section>
+
+        <section id="launch-portfolio" class="ll-portfolio" aria-labelledby="portfolio-title">
+          <div class="ll-portfolio-head"><div><p class="ll-label">Active program</p><h2 id="portfolio-title">Launch portfolio</h2></div><div class="ll-filter-row" aria-label="Saved portfolio views"><button class="ll-filter is-active" data-view="all" type="button" aria-pressed="true">All launches</button><button class="ll-filter" data-view="attention" type="button" aria-pressed="false">Needs attention</button><button class="ll-filter" data-view="mine" type="button" aria-pressed="false">My work</button><button class="ll-filter" data-view="approved" type="button" aria-pressed="false">Approved</button></div></div>
+          <div class="ll-advanced-filters"><label>Region<select id="region-filter"><option value="all">All regions</option><option value="northeast">Northeast</option><option value="midatlantic">Mid-Atlantic</option></select></label><label>Opening month<select id="month-filter"><option value="all">All months</option><option value="sep">September</option><option value="oct">October</option></select></label><button id="clear-filters" type="button">Clear filters</button></div>
+          <div class="ll-table-wrap"><table><thead><tr><th>Location</th><th>Opening</th><th>Readiness</th><th>Current blocker</th><th>Owner</th><th>Decision</th></tr></thead><tbody id="launch-rows"></tbody></table><div id="empty-portfolio" class="ll-empty" hidden><strong>No launches match these filters.</strong><button id="empty-clear" type="button">Clear filters</button></div></div>
+        </section>
+
+        <section id="selected-launch" class="ll-selection" aria-labelledby="selected-name">
+          <div id="out-of-view" class="ll-out-of-view" hidden><span>This location is outside the current portfolio view.</span><button id="return-portfolio" type="button">Return to portfolio</button></div>
+          <div class="ll-selection-header"><div><p id="selected-region" class="ll-label"></p><h2 id="selected-name">Harbor Point</h2><p id="selected-summary"></p></div><div><span id="selected-status" class="ll-status"></span><strong id="selected-score">0%</strong><small>readiness</small></div></div>
+          <div class="ll-preview-grid"><article><p class="ll-label">Opening target</p><strong id="selected-date"></strong><span id="selected-owner"></span></article><article><p class="ll-label">Current blocker</p><strong id="selected-blocker"></strong><span>Open the workspace to resolve this dependency.</span></article><article><p class="ll-label">Decision state</p><strong id="selected-decision"></strong><span>Workspace details arrive in the next build slice.</span></article></div>
+        </section>
+
+        <footer>Independent concept demo by <a href="/">Jiselle Liu</a>. Browse the portfolio and select a location to inspect its operating context.</footer>
+      </section>
+    </main>
+
+    <script>
+      type Launch = { id: number; name: string; region: 'northeast' | 'midatlantic'; regionLabel: string; month: 'sep' | 'oct'; date: string; readiness: number; blocker: string; owner: string; status: 'On track' | 'Needs attention' | 'Approved'; decision: string; summary: string; mine: boolean; };
+      const launches: Launch[] = [
+        { id: 1, name: 'Harbor Point', region: 'northeast', regionLabel: 'Northeast / Boston', month: 'sep', date: 'Sep 26', readiness: 62, blocker: 'Delivery overlaps training', owner: 'Maya Chen', status: 'Needs attention', decision: 'Decision required', summary: 'New waterfront location with a compressed equipment and training window.', mine: true },
+        { id: 2, name: 'West Elm Street', region: 'northeast', regionLabel: 'Northeast / Providence', month: 'sep', date: 'Sep 30', readiness: 78, blocker: 'No active blockers', owner: 'Noah Williams', status: 'On track', decision: 'In review', summary: 'Standard opening plan with facilities inspection booked.', mine: false },
+        { id: 3, name: 'Mason Square', region: 'midatlantic', regionLabel: 'Mid-Atlantic / Philadelphia', month: 'oct', date: 'Oct 08', readiness: 91, blocker: 'No active blockers', owner: 'Maya Chen', status: 'Approved', decision: 'Approved', summary: 'Opening plan approved after final compliance review.', mine: true },
+        { id: 4, name: 'Cedar Crossing', region: 'midatlantic', regionLabel: 'Mid-Atlantic / Baltimore', month: 'oct', date: 'Oct 14', readiness: 69, blocker: 'Site inspection pending', owner: 'Ava Singh', status: 'Needs attention', decision: 'Awaiting evidence', summary: 'Inspection evidence is due before the operations handoff.', mine: false },
+        { id: 5, name: 'Eastford Market', region: 'northeast', regionLabel: 'Northeast / Hartford', month: 'oct', date: 'Oct 22', readiness: 83, blocker: 'No active blockers', owner: 'Noah Williams', status: 'On track', decision: 'In review', summary: 'Team assignments complete; training materials are confirmed.', mine: false },
+      ];
+      let selectedId = 1; let view = 'all'; let region = 'all'; let month = 'all';
+      const get = <T extends HTMLElement>(selector: string) => { const element = document.querySelector<T>(selector); if (!element) throw new Error(`Missing ${selector}`); return element; };
+      const rows = get<HTMLTableSectionElement>('#launch-rows'); const regionFilter = get<HTMLSelectElement>('#region-filter'); const monthFilter = get<HTMLSelectElement>('#month-filter'); const empty = get<HTMLDivElement>('#empty-portfolio'); const outOfView = get<HTMLDivElement>('#out-of-view');
+      const selected = () => launches.find((launch) => launch.id === selectedId)!;
+      const visible = () => launches.filter((launch) => (view === 'all' || (view === 'attention' && launch.status === 'Needs attention') || (view === 'mine' && launch.mine) || (view === 'approved' && launch.status === 'Approved')) && (region === 'all' || launch.region === region) && (month === 'all' || launch.month === month));
+      const resetFilters = () => { view = 'all'; region = 'all'; month = 'all'; regionFilter.value = 'all'; monthFilter.value = 'all'; document.querySelectorAll<HTMLButtonElement>('.ll-filter').forEach((button) => { const active = button.dataset.view === 'all'; button.classList.toggle('is-active', active); button.setAttribute('aria-pressed', String(active)); }); render(); };
+      const renderMetrics = () => { get('#on-track-count').textContent = String(launches.filter((launch) => launch.status === 'On track').length); get('#attention-count').textContent = String(launches.filter((launch) => launch.status === 'Needs attention').length); get('#task-rate').textContent = `${Math.round(launches.reduce((total, launch) => total + launch.readiness, 0) / launches.length)}%`; get('#approval-rate').textContent = `${Math.round((launches.filter((launch) => launch.status === 'Approved').length / launches.length) * 100)}%`; };
+      const renderRows = () => { const available = visible(); rows.replaceChildren(); empty.hidden = available.length > 0; available.forEach((launch) => { const row = document.createElement('tr'); row.tabIndex = 0; row.className = launch.id === selectedId ? 'is-selected' : ''; row.innerHTML = `<td><strong>${launch.name}</strong><span>${launch.regionLabel}</span></td><td>${launch.date}</td><td><b>${launch.readiness}%</b><i><em style="width:${launch.readiness}%"></em></i></td><td>${launch.blocker}</td><td>${launch.owner}</td><td><mark class="${launch.status.toLowerCase().replaceAll(' ', '-')}">${launch.decision}</mark></td>`; const choose = () => { selectedId = launch.id; render(); document.querySelector('#selected-launch')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }; row.addEventListener('click', choose); row.addEventListener('keydown', (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); choose(); } }); rows.append(row); }); };
+      const renderSelection = () => { const launch = selected(); get('#selected-region').textContent = launch.regionLabel; get('#selected-name').textContent = launch.name; get('#selected-summary').textContent = launch.summary; get('#selected-status').textContent = launch.status; get('#selected-status').className = `ll-status ${launch.status.toLowerCase().replaceAll(' ', '-')}`; get('#selected-score').textContent = `${launch.readiness}%`; get('#selected-date').textContent = launch.date; get('#selected-owner').textContent = `Launch owner: ${launch.owner}`; get('#selected-blocker').textContent = launch.blocker; get('#selected-decision').textContent = launch.decision; outOfView.hidden = visible().some((item) => item.id === launch.id); };
+      const render = () => { renderMetrics(); renderRows(); renderSelection(); };
+      document.querySelectorAll<HTMLButtonElement>('.ll-filter').forEach((button) => button.addEventListener('click', () => { view = button.dataset.view || 'all'; document.querySelectorAll<HTMLButtonElement>('.ll-filter').forEach((item) => { const active = item === button; item.classList.toggle('is-active', active); item.setAttribute('aria-pressed', String(active)); }); const first = visible()[0]; if (first) selectedId = first.id; render(); }));
+      regionFilter.addEventListener('change', () => { region = regionFilter.value; render(); }); monthFilter.addEventListener('change', () => { month = monthFilter.value; render(); }); get('#clear-filters').addEventListener('click', resetFilters); get('#empty-clear').addEventListener('click', resetFilters); get('#return-portfolio').addEventListener('click', () => { resetFilters(); get('#launch-portfolio').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+      get('#focus-attention').addEventListener('click', () => { document.querySelector<HTMLButtonElement>('[data-view="attention"]')?.click(); get('#launch-portfolio').scrollIntoView({ behavior: 'smooth', block: 'start' }); }); get('#open-harbor').addEventListener('click', () => { selectedId = 1; render(); get('#selected-launch').scrollIntoView({ behavior: 'smooth', block: 'start' }); }); render();
+    </script>
+  </body>
+</html>
