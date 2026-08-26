@@ -8,8 +8,9 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build --force",
+    "build:public": "npm run build && node scripts/strip-public-demos.mjs",
     "preview": "astro preview",
-    "deploy": "npm run build && gh-pages -d dist --dotfiles"
+    "deploy": "npm run build:public && gh-pages -d dist --dotfiles"
   },
   "dependencies": {
     "astro": "^7.0.2"
