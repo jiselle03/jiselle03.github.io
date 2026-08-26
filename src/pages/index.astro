@@ -2,28 +2,34 @@
 import '../styles/global.css';
 
 const links = [
-  { label: 'Demo', href: '/demo/cadence/' },
   { label: 'GitHub', href: 'https://github.com/jiselle03' },
   { label: 'LinkedIn', href: 'https://linkedin.com/in/jiselleliu' },
   { label: 'Writing', href: 'https://www.timidmag.com/writers/jiselle-liu' },
   { label: 'Email', href: 'mailto:hello@jiselleliu.com' },
 ];
 
-const signals = [
-  { label: 'Operational portals', value: 'Roles, approvals, queues, and audit-friendly work' },
-  { label: 'AI-assisted workflows', value: 'Extraction, review, and recommendations with human oversight' },
-  { label: 'Product systems', value: 'Clear flows, integrations, and the details that make work stick' },
+const caseStudies = [
+  {
+    number: '01',
+    title: 'Operational systems',
+    problem: 'When scheduling, records, and day-to-day staff work need to live in one system with the right context for each role.',
+    role: 'I turn requirements and rules into clear specs, then build the frontend, backend, and test coverage that keeps the workflow reliable.',
+  },
+  {
+    number: '02',
+    title: 'AI-assisted review',
+    problem: 'When a team needs to make decisions from a large amount of information without losing the human judgment behind them.',
+    role: 'I design and build data flows, review interfaces, and human-in-the-loop AI features that provide context instead of hiding it.',
+  },
+  {
+    number: '03',
+    title: 'Document-driven automation',
+    problem: 'When long documents and repetitive form work slow people down, but the final approval still needs a human eye.',
+    role: 'I build prototypes and production-ready foundations that combine uploaded material, structured state, and AI-assisted drafting.',
+  },
 ];
 
-const ownershipNotes = [
-  { label: 'Workflow discovery', value: 'Find the friction, define the right system, and make the next step clear' },
-  { label: 'Product delivery', value: 'Take a focused scope from working plan to production-quality software' },
-];
-
-const waysOfWorking = ['Fixed-scope builds', 'Pragmatic automation', 'Careful product surfaces'];
-
-const preferredStack = ['TypeScript', 'Next.js', 'React', 'tRPC', 'Drizzle', 'PostgreSQL', 'Tailwind', 'OpenAI', 'Vitest'];
-const additionalExperience = ['Vue', 'Ruby on Rails', 'Go', 'Express', 'MongoDB', 'React Query', 'Playwright', 'Claude Code', 'Codex'];
+const tools = ['TypeScript', 'Next.js', 'React', 'PostgreSQL', 'tRPC', 'Drizzle', 'Vitest', 'Playwright'];
 ---
 
 <!doctype html>
@@ -31,8 +37,8 @@ const additionalExperience = ['Vue', 'Ruby on Rails', 'Go', 'Express', 'MongoDB'
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Jiselle Liu builds workflow software that helps teams turn busywork into usable systems." />
-    <meta name="theme-color" content="#0b1d2a" />
+    <meta name="description" content="Jiselle Liu is a fullstack engineer who turns messy work into software people can use." />
+    <meta name="theme-color" content="#f4f6f8" />
     <link rel="icon" type="image/svg+xml" href="/icons/jl-mark.svg" />
     <link rel="alternate icon" href="/icons/favicon_512.png" />
     <link rel="apple-touch-icon" href="/icons/favicon_512.png" />
@@ -41,107 +47,92 @@ const additionalExperience = ['Vue', 'Ruby on Rails', 'Go', 'Express', 'MongoDB'
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-
-    <header class="site-header" aria-label="Site header">
-      <a class="brand" href="/" aria-label="Jiselle Liu home">
-        <span class="brand-mark" aria-hidden="true">JL</span>
-        <span>Jiselle Liu</span>
-      </a>
-
-      <nav class="nav-links" aria-label="Primary navigation">
-        {links.map((link) => (
-          <a href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel={link.href.startsWith('http') ? 'noreferrer' : undefined}>
-            {link.label}
-          </a>
-        ))}
-      </nav>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Jiselle Liu home"><span>JL</span>Jiselle Liu</a>
+      <nav aria-label="Elsewhere">{links.map((link) => <a href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel={link.href.startsWith('http') ? 'noreferrer' : undefined}>{link.label}</a>)}</nav>
     </header>
+    <main id="main">
+      <section class="hero">
+        <p class="kicker">Taipei-based fullstack and forward engineer</p>
+        <h1>I build useful software.</h1>
+        <div class="hero-note"><p>Some clients come with a full spec and Figma screens. I like building that work. Other times, the idea is only half formed. I can turn it into a spec, ask what each role needs, and catch problems before they turn into expensive rules.</p></div>
+        <a class="project-link" href="mailto:hello@jiselleliu.com?subject=Project%20inquiry">Talk through a project <span aria-hidden="true">↗</span></a>
+      </section>
 
-    <main id="main" class="page-shell">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow">Fullstack engineer / workflow systems</p>
-          <h1 id="hero-title">
-            <span>Turn busywork</span>
-            <span>into usable systems.</span>
-          </h1>
-          <p class="lede">
-            I help teams understand where work gets stuck, define a better process, and ship
-            the software or automation that makes it run.
-          </p>
+      <section class="statement" aria-labelledby="approach-title" data-reveal>
+        <p class="section-label">How I approach it</p>
+        <h2 id="approach-title">The edge cases show up early if you ask the right questions.</h2>
+        <div><p>A request can sound simple until there are several roles, different rules for each one, and an admin view sitting behind the customer-facing one. I like getting into that before the work piles up.</p><p>I think about the data model and the person at the other end of the screen. A decision that keeps the database tidy can still give users more work. A polished mockup can still hide a process that will break the first time an exception appears.</p></div>
+      </section>
 
-          <div class="hero-actions" aria-label="Primary links">
-            <a class="button button-primary" href="mailto:hello@jiselleliu.com?subject=Project%20inquiry">Start a project</a>
-            <a class="button button-secondary" href="/demo/cadence/">Try the demo</a>
+      <section class="starting-point" aria-labelledby="starting-point-title" data-reveal>
+        <div class="section-head"><p class="section-label">A good place to start</p><h2 id="starting-point-title">Bring the part you know</h2></div>
+        <div class="intake-switcher">
+          <div class="intake-options" aria-label="Choose a project starting point">
+            <button type="button" data-intake="brief" aria-pressed="true">I have a brief</button>
+            <button type="button" data-intake="workflow" aria-pressed="false">I have a process</button>
           </div>
-        </div>
-
-        <div class="interface-board" aria-hidden="true">
-          <div class="board-window window-a">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div class="board-window window-b">
-            <span></span>
-            <span></span>
-          </div>
-          <div class="board-cursor"></div>
+          <p data-intake-copy>Bring the requirements and Figma screens. I will build the feature, pressure-test the details, and flag choices that will get costly later.</p>
         </div>
       </section>
 
-      <section class="work-section" aria-labelledby="work-title">
-        <div class="section-kicker">
-          <h2 id="work-title">What I build</h2>
-        </div>
-
-        <div class="ownership-strip" aria-label="Work style">
-          {ownershipNotes.map((item) => (
-            <p>
-              <span>{item.label}</span>
-              {item.value}
-            </p>
-          ))}
-        </div>
-
-        <div class="signal-grid">
-          {signals.map((item) => (
-            <article class="signal-card">
-              <p>{item.label}</p>
-              <h3>{item.value}</h3>
-            </article>
-          ))}
-        </div>
-
-        <div class="earlier-work" aria-label="Ways of working">
-          <p>How I work</p>
-          <ul>
-            {waysOfWorking.map((item) => (
-              <li>{item}</li>
-            ))}
-          </ul>
+      <section class="case-studies" aria-labelledby="work-title" data-reveal>
+        <p class="section-label" id="work-title">What I build</p>
+        <div class="case-study-list">
+          {caseStudies.map((study) => <article class="case-study"><p class="case-number">{study.number}</p><div><h3>{study.title}</h3><dl><div><dt>Where it helps</dt><dd>{study.problem}</dd></div><div><dt>What I build</dt><dd>{study.role}</dd></div></dl></div></article>)}
         </div>
       </section>
 
-      <section class="stack-band" aria-label="Technology stack">
-        <div>
-          <p>Preferred stack</p>
-          <ul>
-            {preferredStack.map((item) => (
-              <li>{item}</li>
-            ))}
-          </ul>
-        </div>
+      <section class="working-style" aria-labelledby="working-title" data-reveal>
+        <p class="section-label">Working style</p><h2 id="working-title">Bring me a clear brief, or a problem that still needs one.</h2>
+        <div class="working-points"><p><strong>When the brief is clear</strong>I build it carefully, write the pieces that still need deciding, and flag choices that will hurt later.</p><p><strong>When it is not</strong>I help map the work, turn it into a spec, and decide what the first version needs to do.</p><p><strong>All the way through</strong>I pay attention to the implementation and the experience. Users have to live with both.</p><p><strong>Before it ships</strong>I write unit and end-to-end tests around the paths that matter, then use them to keep later changes from breaking the work.</p></div>
+      </section>
 
-        <div>
-          <p>Additional experience</p>
-          <ul>
-            {additionalExperience.map((item) => (
-              <li>{item}</li>
-            ))}
-          </ul>
-        </div>
+      <section class="tools" aria-label="Tools I use"><p>Tools I reach for</p><ul>{tools.map((tool) => <li>{tool}</li>)}</ul></section>
+
+      <section class="writing" aria-labelledby="writing-title" data-reveal>
+        <p class="section-label">Writing</p>
+        <div class="writing-grid"><h2 id="writing-title">Outside of software, I write reported features.</h2><a class="writing-link" href="https://www.timidmag.com/writers/jiselle-liu" target="_blank" rel="noreferrer"><span>Timid Magazine</span><strong>Read my writing</strong><span aria-hidden="true">↗</span></a></div>
       </section>
     </main>
+    <footer><span>Jiselle Liu</span><a href="mailto:hello@jiselleliu.com">hello@jiselleliu.com</a></footer>
+    <script is:inline>
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const revealItems = document.querySelectorAll('[data-reveal]');
+
+      if (!reducedMotion && 'IntersectionObserver' in window) {
+        document.documentElement.classList.add('reveal-ready');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          });
+        }, { threshold: 0.12 });
+        revealItems.forEach((item) => observer.observe(item));
+      }
+
+      const intakeCopy = {
+        brief: 'Bring the requirements and Figma screens. I will build the feature, pressure-test the details, and flag choices that will get costly later.',
+        workflow: 'Bring the part of the work people are doing by hand. We will map the roles, rules, and handoffs, then decide what the first version needs to do.',
+      };
+      const intakeButtons = document.querySelectorAll('[data-intake]');
+      const intakeCopyNode = document.querySelector('[data-intake-copy]');
+
+      intakeButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const selected = button.dataset.intake;
+          intakeButtons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+
+          if (!reducedMotion && intakeCopyNode?.animate) {
+            intakeCopyNode.animate([
+              { opacity: 0.35, transform: 'translateY(0.3rem)' },
+              { opacity: 1, transform: 'translateY(0)' },
+            ], { duration: 220, easing: 'cubic-bezier(0.25, 1, 0.5, 1)' });
+          }
+          intakeCopyNode.textContent = intakeCopy[selected];
+        });
+      });
+    </script>
   </body>
 </html>
