@@ -1,93 +1,107 @@
-# Launch Operations Demo Plan
+# Cadence refinement plan
 
-## Product Concept
+## Purpose
 
-Build a fictional browser-only product called **Launchline**. It helps a regional operations team prepare several new physical locations to open on schedule. A launch manager can see what is blocked, coordinate people across functions, resolve an exception, and capture the final decision in one place.
+Cadence is a fictional, frontend-only operations system for teams opening several physical locations. It demonstrates how a vague cross-functional problem becomes a shared operating record: work, dependencies, people, decisions, and an audit trail in one place.
 
-This is not a client case study or a reconstruction of past client work. It is an independently designed concept that demonstrates the complexity of a production operational portal: schedules, role-based work, dependencies, approvals, shared records, and clear recovery paths.
+The product should answer four questions immediately:
 
-## Demonstrated Problem
+1. Which opening is at risk?
+2. What needs to happen next, and who owns it?
+3. What changes if a prerequisite slips?
+4. Who made the decision to proceed?
 
-Opening a location often means that facilities, finance, operations, and training teams each have a partial view of the same work. A missed permit, delayed delivery, or unavailable lead can silently put the opening date at risk.
+## First-run clarity
 
-Launchline makes the opening plan visible as a shared operating record. It answers four practical questions:
+A visitor should not need to infer the product from dashboard charts.
 
-1. Which locations are at risk and why?
-2. What must happen next, and who owns it?
-3. What changes when a dependency slips?
-4. Who approved the final decision to open?
+On first entry, show a concise **scenario brief** over the real application:
 
-## Primary User And Scenario
+- **Role:** Maya, regional launch manager.
+- **Situation:** Harbor Point opens September 26; equipment delivery overlaps staff training.
+- **Goal:** Review the impact, move the training window, assign the follow-up, and record the opening decision.
 
-**Primary user:** regional launch manager responsible for five planned openings.
+Offer two equal choices:
 
-**Guided scenario:** the manager opens the product three weeks before launch. One location is at risk because the delivery window overlaps the staff training window. The manager reviews the dependency, moves a training session, assigns the follow-up, and records a conditional approval. The portfolio, timeline, and activity history update immediately.
+- `Start guided scenario`: takes the visitor through the live conflict, one action at a time.
+- `Explore workspace`: dismisses the brief and leaves the application fully usable.
 
-## Product Surface
+The brief is a centered dialog on desktop and a bottom sheet on phones. It has no decorative introduction, no more than three short rows, a visible dismiss action, and remembers dismissal for the current browser session. A `Restart scenario` action stays available in the command center.
 
-### 1. Portfolio Command Center
+## Product structure
 
-- A dense location table with opening date, readiness score, owner, current blocker, and approval status.
-- Summary metrics for on-track locations, blockers due this week, approvals awaiting review, and open exceptions.
-- A readiness trend chart and a delivery-versus-training capacity chart using deterministic fictional data.
-- Saved views for `All launches`, `Needs attention`, `My work`, and `Approved`.
-- Search and filters for region, opening month, status, and owning function.
+The current one-page dashboard becomes four product-level views:
 
-### 2. Location Workspace
+| View | Visitor value |
+| --- | --- |
+| Command Center | See decisions due now and open the highest-impact issue. |
+| Portfolio | Compare planned openings by date, readiness, owner, function, and decision state. |
+| My Work | See role-specific work with urgency and blocked prerequisites. |
+| Decision Log | Review exceptions, approvals, owners, conditions, and dated history. |
 
-- Persistent location header with opening date, current decision state, readiness score, owner, and risk reason.
-- Tabs for `Plan`, `Schedule`, `Dependencies`, `Team`, `Approvals`, and `Activity`.
-- Plan tab: grouped checklist with due dates, owners, completion, and blocking relationships.
-- Schedule tab: week calendar showing delivery, training, site inspection, and launch events; support rescheduling a fictional event through a dialog.
-- Dependencies tab: compact dependency map and an impact panel showing what moves when a prerequisite changes.
-- Team tab: role roster, availability, and assignment drawer.
-- Approvals tab: decision sheet that summarizes remaining risks, evidence, approver, and condition notes.
-- Activity tab: append-only operational history of assignments, schedule changes, exceptions, and approvals.
+Selecting a location opens a persistent workspace with `Plan`, `Schedule`, `Dependencies`, `Team`, `Approvals`, and `Activity` views. The selected location remains visible while the user moves through these views.
 
-### 3. Role Inbox
+## Core interaction
 
-- Switchable roles: `Launch manager`, `Facilities`, `Operations`, `Training`, and `Finance`.
-- Each role sees an actionable queue with urgency, location, due date, and the prerequisite that makes the task meaningful.
-- Selecting an item deep-links into the relevant tab and highlights the next action.
-- Completion and reassignment update the corresponding location plan and activity history.
+The demo's central scenario is a delivery conflict at Harbor Point:
 
-### 4. Exception Workflow
+1. Open the decision due in Command Center.
+2. Review the delivery/training overlap in Schedule and its downstream impact in Dependencies.
+3. Move the training window and assign the follow-up owner.
+4. Record a mitigation, accepted risk, or escalation.
+5. See the portfolio, readiness score, role inbox, decision log, and activity record update from the same local state.
 
-- An exception drawer for a delayed delivery or failed inspection.
-- Required structured choices: severity, affected milestone, new expected date, proposed mitigation, accountable owner, and stakeholders to notify.
-- Impact preview: the UI calculates the tasks and events affected by the change from local fixture data.
-- Resolve, accept-risk, or escalate decisions produce a dated activity entry and update portfolio health.
+This is the proof point. Additional data and charts should support this flow, not compete with it.
 
-### 5. Guided Product Tour
+## Portfolio and workspace improvements
 
-- Starts from a clear “Take the guided scenario” control and may be dismissed at any step.
-- The tour navigates to a real record, applies the correct filter, scrolls to the exact control, and uses a contextual popover to explain the next action.
-- It waits for the visitor’s completion before advancing.
-- Completion returns to the portfolio with an updated readiness score and a concise “what changed” summary.
+### Command Center
 
-## Frontend-Only Technical Model
+- Make `Decisions due` the first, action-oriented surface.
+- Keep metrics and charts as supporting context.
+- Surface deadline, accountable owner, impact, and one next action per decision.
 
-- Astro route with one self-contained TypeScript interaction layer and scoped CSS, following the current static-site pattern.
-- Fictional fixture data held in browser memory only. Refresh restores the initial scenario.
-- No authentication, API requests, database, analytics, external fonts, AI calls, tokens, or client data.
-- State model: locations, milestones, tasks, events, dependencies, people, role inbox items, approvals, exceptions, and activity events.
-- Derived selectors calculate readiness, blockers, schedule conflicts, inbox contents, and impacted tasks. No business logic is copied from client systems.
-- Use native dialogs for assignment, schedule adjustment, and exception handling; preserve keyboard focus and visible feedback.
+### Portfolio
 
-## Build Sequence
+- Add an opening timeline with readiness bands and risk markers.
+- Keep saved views and add filters for date range, risk, function, decision state, and owner.
+- Preserve selection when filters change, while clearly explaining when it is outside the active view.
 
-1. Replace the current vendor-readiness concept with the Launchline command-center shell, fictional fixture data, navigation, and responsive layout.
-2. Implement the portfolio table, saved views, filters, and derived readiness metrics.
-3. Implement the location workspace with plan, schedule, dependency, team, approvals, and activity tabs.
-4. Add role inbox navigation and state synchronization with the workspace.
-5. Add schedule adjustment and exception dialogs with impact previews and derived updates.
-6. Add the contextual guided scenario and reset behavior.
-7. Audit desktop, tablet, and mobile layouts; keyboard flow; dialogs; target sizes; text overflow; and reduced-motion behavior.
+### Location workspace
 
-## Definition Of Done
+- Plan: milestone groups, owners, due dates, blocked state, and completion evidence.
+- Schedule: a day/week timeline that makes event collisions immediately legible.
+- Dependencies: an impact chain showing what will move if a prerequisite moves.
+- Team: role roster, availability, and next handoff.
+- Approvals: decision sheet with remaining risk, condition, approver, and evidence.
+- Activity: append-only operational history that explains why the record changed.
 
-- A visitor can understand the operational problem before interacting, then complete one end-to-end exception-resolution flow without instruction outside the product.
-- A change made in a dialog is reflected consistently in the portfolio, location workspace, role inbox, readiness score, and activity history.
-- The product has enough real interaction to communicate system design skill: filtering, selection, navigation, derived state, updates, dialogs, conflict handling, and an audit trail.
-- It remains clearly labeled as a fictional, frontend-only prototype.
-- `npm run build` succeeds with no Astro diagnostics. Deployment happens only on an explicit request.
+### My Work and Decision Log
+
+- Replace the standalone role selector with a focused work queue.
+- Deep-link each item to its task or decision.
+- Show decision history as a first-class view, not only as a workspace tab.
+
+## Frontend boundary
+
+- All people, locations, dates, events, and decisions are fictional fixture data.
+- State lives in browser memory and resets on refresh.
+- No authentication, API calls, database, AI calls, tokens, analytics, or client data.
+- Use native dialogs/sheets, visible focus states, keyboard support, and reduced-motion handling.
+
+## Delivery order
+
+1. Replace the long-page information architecture with view state and persistent location context.
+2. Add the first-run scenario brief and restartable guided scenario.
+3. Rebuild Command Center and the portfolio timeline around decisions and impact.
+4. Deepen the location workspace and synchronize derived state across views.
+5. Add My Work and Decision Log.
+6. Complete the exception flow, responsive polish, and accessibility/design audit.
+
+## Definition of done
+
+- A first-time visitor understands the scenario before interacting and can choose guidance or free exploration.
+- The complete conflict-to-decision flow updates every affected surface consistently.
+- The product feels like a focused operational application, not a set of dashboard sections.
+- The phone experience uses a bottom sheet and linear, thumb-friendly guided flow; desktop uses the same state model without a separate workflow.
+- The product remains clearly fictional and frontend-only without repeating that disclaimer throughout the UI.
