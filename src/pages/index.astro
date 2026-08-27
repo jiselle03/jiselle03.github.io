@@ -29,7 +29,11 @@ const caseStudies = [
   },
 ];
 
-const tools = ['TypeScript', 'Next.js', 'React', 'PostgreSQL', 'tRPC', 'Drizzle', 'Vitest', 'Playwright'];
+const toolGroups = [
+  { label: 'Frontend', tone: 'frontend', tools: ['TypeScript', 'Next.js', 'React', 'Vue', 'GraphQL'] },
+  { label: 'Systems and data', tone: 'systems', tools: ['PostgreSQL', 'tRPC', 'Drizzle', 'Rails'] },
+  { label: 'Quality', tone: 'quality', tools: ['Vitest', 'Playwright'] },
+];
 ---
 
 <!doctype html>
@@ -96,6 +100,7 @@ const tools = ['TypeScript', 'Next.js', 'React', 'PostgreSQL', 'tRPC', 'Drizzle'
         <div class="case-study-list">
           {caseStudies.map((study) => <article class="case-study"><p class="case-number">{study.number}</p><div class="case-study-content"><h3>{study.title}</h3><dl><div><dt>Where it helps</dt><dd>{study.problem}</dd></div><div><dt>What I build</dt><dd>{study.role}</dd></div></dl></div></article>)}
         </div>
+        <p class="work-background">Earlier work included frontend and API integration work for payment and lending workflows.</p>
       </section>
 
       <section class="working-style" aria-labelledby="working-title" data-reveal>
@@ -103,7 +108,10 @@ const tools = ['TypeScript', 'Next.js', 'React', 'PostgreSQL', 'tRPC', 'Drizzle'
         <div class="working-points"><p><strong>When the brief is clear</strong>I build it carefully, write the pieces that still need deciding, and flag choices that will hurt later.</p><p><strong>When it is not</strong>I help map the work, turn it into a spec, and decide what the first version needs to do.</p><p><strong>All the way through</strong>I pay attention to the implementation and the experience. Users have to live with both.</p><p><strong>Before it ships</strong>I write unit and end-to-end tests around the paths that matter, then use them to keep later changes from breaking the work.</p></div>
       </section>
 
-      <section class="tools" aria-label="Tools I use"><p>Tools I reach for</p><ul>{tools.map((tool) => <li>{tool}</li>)}</ul></section>
+      <section class="tools" aria-labelledby="tools-title">
+        <p id="tools-title">Tools I reach for</p>
+        <ul class="tool-list">{toolGroups.map((group) => group.tools.map((tool) => <li class:list={[`tool-${group.tone}`]}>{tool}</li>))}</ul>
+      </section>
 
       <section class="writing" aria-labelledby="writing-title" data-reveal>
         <p class="section-label">Writing</p>
