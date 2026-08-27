@@ -19,10 +19,11 @@ The scenario brief offers `Start guided scenario` and `Explore on my own`. The g
 
 ## Views
 
+- **Member workspace:** Explore and My schedule are grouped together under the client-facing view.
 - **Explore:** filter classes by time, format, level, location, and credit cost.
 - **Class details:** schedule, instructor, capacity, requirements, credit cost, and cancellation rule.
 - **My schedule:** upcoming bookings, waitlist state, credit balance, and cancellation/refund result.
-- **Studio view:** a compact operator surface showing roster, capacity, and recent member changes.
+- **Studio workspace:** a separate operator surface showing roster, capacity, and recent member changes.
 
 ## Frontend-only boundary
 
