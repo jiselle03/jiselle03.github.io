@@ -1,14 +1,14 @@
 :root {
-  --paper: #f4f6f8;
-  --ink: #172337;
-  --muted: #5d6e89;
-  --line: #cfd8e5;
-  --accent: #ffd21f;
-  --accent-ink: #19243a;
-  --signal-blue: #4a79e9;
-  --signal-mint: #5ac5a8;
-  --map-planning: #dfe7fb;
-  --map-delivery: #ddf1e9;
+  --paper: #f3f0e8;
+  --ink: #14243a;
+  --muted: #596b80;
+  --line: #b9c4cf;
+  --accent: #f0cf27;
+  --accent-ink: #14243a;
+  --signal-blue: #315fc9;
+  --signal-mint: #6cae92;
+  --map-planning: #dce6fb;
+  --map-delivery: #dbece2;
   font-family: "Avenir Next", Avenir, "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
   color: var(--ink);
   background: var(--paper);
@@ -38,9 +38,10 @@ a { color: inherit; }
   justify-content: space-between;
   gap: 1.5rem;
   padding: 1.35rem 0;
+  border-bottom: 2px solid var(--ink);
 }
 .brand { display: inline-flex; align-items: center; min-height: 2.75rem; gap: 0.6rem; font-size: 0.94rem; font-weight: 750; text-decoration: none; }
-.brand span { display: grid; place-items: center; width: 2rem; height: 2rem; background: var(--accent); font-size: 0.72rem; letter-spacing: 0.04em; }
+.brand span { display: grid; place-items: center; width: 2rem; height: 2rem; background: var(--accent); box-shadow: 3px 3px 0 var(--ink); font-size: 0.72rem; letter-spacing: 0.04em; }
 nav { display: flex; gap: 1.15rem; flex-wrap: wrap; justify-content: flex-end; }
 nav a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--muted); font-size: 0.88rem; text-decoration: none; }
 nav a:hover, nav a:focus-visible { color: var(--ink); text-decoration: underline; text-underline-offset: 0.25rem; }
@@ -54,10 +55,17 @@ nav a:hover, nav a:focus-visible { color: var(--ink); text-decoration: underline
 .project-link span { transition: transform 180ms cubic-bezier(0.25, 1, 0.5, 1); }
 .project-link:hover, .project-link:focus-visible { background: var(--ink); color: var(--paper); }
 .project-link:hover span, .project-link:focus-visible span { transform: translate(0.16rem, -0.16rem); }
+.casebook-index { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 0; margin-top: 2rem; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--ink); }
+.casebook-index a { display: inline-flex; align-items: center; gap: .55rem; min-height: 3rem; padding: .45rem 1rem .45rem 0; margin-right: 1rem; color: var(--ink); font-size: .76rem; font-weight: 750; text-decoration: none; }
+.casebook-index a + a { padding-left: 1rem; border-left: 1px solid var(--ink); }
+.casebook-index b { display: inline-grid; width: 1.45rem; aspect-ratio: 1; place-items: center; color: var(--paper); background: var(--ink); font-size: .64rem; }
+.casebook-index a:hover, .casebook-index a:focus-visible { color: var(--signal-blue); text-decoration: none; }
+.casebook-index a:hover b, .casebook-index a:focus-visible b { color: var(--ink); background: var(--accent); }
 
 .project-map { position: relative; min-width: 0; padding: 1rem 0 0; border-top: 2px solid var(--ink); }
+.project-map::after { position: absolute; top: -2px; right: 0; width: 3.5rem; height: 2px; background: var(--accent); content: ""; }
 .map-label { margin: 0 0 1rem; font-size: 0.76rem; font-weight: 750; letter-spacing: 0.11em; text-transform: uppercase; }
-.map-board { position: relative; display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: 0.9fr 0.9fr 1fr; min-height: 18rem; overflow: hidden; padding: 1.15rem; background-color: #e6ebf2; background-image: linear-gradient(#cbd5e4 1px, transparent 1px), linear-gradient(90deg, #cbd5e4 1px, transparent 1px); background-size: 1.25rem 1.25rem; }
+.map-board { position: relative; display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: 0.9fr 0.9fr 1fr; min-height: 18rem; overflow: hidden; padding: 1.15rem; background-color: #e5e9e7; background-image: linear-gradient(#c0cbd0 1px, transparent 1px), linear-gradient(90deg, #c0cbd0 1px, transparent 1px); background-size: 1.25rem 1.25rem; }
 .map-observe, .map-diagnose, .map-propose, .map-scope, .map-code, .map-test, .map-docs { position: relative; z-index: 1; display: grid; align-content: center; gap: 0.2rem; min-width: 0; border: 2px solid var(--ink); padding: 0.5rem; background: var(--paper); line-height: 1.18; }
 .map-observe span, .map-code span { font-size: 0.58rem; font-weight: 750; letter-spacing: 0.08em; text-transform: uppercase; }
 .map-observe strong, .map-code strong { font-size: clamp(0.78rem, 1.25vw, 0.96rem); letter-spacing: -0.02em; }
@@ -123,6 +131,20 @@ nav a:hover, nav a:focus-visible { color: var(--ink); text-decoration: underline
 footer { display: flex; justify-content: space-between; gap: 1rem; padding: 2.25rem 0 3rem; color: var(--muted); font-size: 0.86rem; }
 footer span { color: var(--ink); font-weight: 750; }
 
+/* Neubrutalist Award Grade: explicit hierarchy, numbered proof, disciplined signals. */
+.hero h1 { font-weight: 900; }
+.hero h1::after { display: block; width: min(5.5rem, 24%); height: 0.62rem; margin-top: 1.15rem; background: var(--accent); content: ""; }
+.hero-note { padding-left: 1rem; border-left: 3px solid var(--signal-blue); }
+.project-link { border: 2px solid var(--ink); box-shadow: 4px 4px 0 var(--ink); }
+.project-link:hover, .project-link:focus-visible { box-shadow: 0 0 0 var(--ink); transform: translate(4px, 4px); }
+.case-study { position: relative; }
+.case-number { display: grid; width: 2.5rem; aspect-ratio: 1; place-items: center; color: var(--ink); background: var(--accent); box-shadow: 3px 3px 0 var(--ink); }
+.case-study:nth-child(2) .case-number { color: var(--paper); background: var(--signal-blue); }
+.case-study:nth-child(3) .case-number { background: var(--signal-mint); }
+.case-study h3 { max-width: 17ch; }
+.tools { border-top: 2px solid var(--ink); }
+.tool-list li { border-width: 2px; }
+
 @media (prefers-reduced-motion: no-preference) {
   .hero-copy > .kicker,
   .hero-copy > h1,
@@ -148,6 +170,7 @@ footer span { color: var(--ink); font-weight: 750; }
   nav { gap: 0.7rem 1rem; }
   .hero h1 { font-size: clamp(3.05rem, 15vw, 4.5rem); }
   .hero, .statement, .section-head, .intake-switcher, .writing-grid, .working-style, .tools { grid-template-columns: 1fr; gap: 1.15rem; }
+  .casebook-index { margin-top: 1.5rem; }
   .project-map { width: min(100%, 28rem); margin-top: 1.25rem; }
   .statement h2, .working-style h2, .working-points { grid-column: auto; }
   .section-head { margin-bottom: 2rem; }

@@ -18,15 +18,6 @@ Position Jiselle Liu as an individual full-stack engineer for fixed-scope workfl
 - Offer a direct project inquiry path for remote teams with focused operational software needs.
 - Keep the site personal. Collaborators are optional capacity for a suitable engagement, not a separate studio brand.
 
-## Phase Two: Vendor Readiness
-
-Add an interactive, frontend-only concept demo at `/demo/vendor-readiness/`.
-
-- Show a fictional vendor portfolio with evidence requirements, risk signals, reviewers, and approval stages.
-- Include a dashboard, vendor queue, readiness progress, document review, ownership changes, and decision history.
-- Keep all data fictional and in browser memory. Do not use a backend, auth, database, server API, AI, tokens, client data, or client-derived behavior.
-- Present it as an independent prototype that demonstrates how a vague process can become visible and accountable.
-
 ## Distribution And Pipeline
 
 - Target remote B2B product teams and agencies that need senior full-stack delivery for operational software.

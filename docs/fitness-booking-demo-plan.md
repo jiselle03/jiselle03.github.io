@@ -2,7 +2,7 @@
 
 ## Concept
 
-A fictional membership app for booking local fitness classes. It is centered on a simple visitor question: "What can I book this week with the credits I have?"
+A fictional membership network that lets people use credits across independent fitness studios. It is centered on a simple visitor question: "What can I book this week with the credits I have?"
 
 The catalog includes reformer, Lagree, kickboxing, bouldering, and strength training. Those formats have different credit costs and booking rules, which makes the product easy to understand while still demonstrating real product complexity.
 
@@ -20,17 +20,27 @@ The scenario brief offers `Start guided scenario` and `Explore on my own`. The g
 ## Views
 
 - **Member workspace:** Explore and My schedule are grouped together under the client-facing view.
-- **Explore:** filter classes by time, format, level, location, and credit cost.
+- **Explore:** browse the selected day and filter by discipline, format, and studio.
 - **Class details:** schedule, instructor, capacity, requirements, credit cost, and cancellation rule.
-- **My schedule:** upcoming bookings, waitlist state, credit balance, and cancellation/refund result.
-- **Studio workspace:** a separate operator surface showing roster, capacity, and recent member changes.
+- **Schedule:** upcoming bookings, waitlist state, credit balance, and cancellation/refund result.
+- **Account:** editable profile details, membership information, payment-method display, and a password-change flow.
+- **Partner console:** a separate operator surface for partner locations, showing the weekly roster, capacity, and recent member changes.
 
 ## Frontend-only boundary
 
-- All classes, members, balances, policies, and availability are local fixtures.
+- All classes, members, balances, policies, availability, and account details are local fixtures.
 - Booking, cancellation, waitlist, refund, and studio changes are derived browser state that resets on refresh.
 - No real payment processing, accounts, maps, API calls, database, AI calls, analytics, or client data.
 - A refund means a visible credit-balance state change only; it never represents a real transaction.
+
+## Production reference
+
+The demo stays browser-only, but its interaction model is backed by a public-safe production design:
+
+- [Architecture](./studio-production-architecture.md): tenancy, roles, templates versus occurrences, booking commands, projections, operations, and test layers.
+- [Data model](./studio-data-model.md): records, constraints, ledger, recurrence, enrollment, waitlist, and audit boundaries.
+- [Behavior rules](./studio-behavior-spec.md): high-risk booking, cancellation, waitlist, conflict, and mobile scenarios.
+- [Product delivery plan](./studio-product-delivery-plan.md): discovery questions, rule setting, stakeholder review, and implementation slices.
 
 ## Delivery order
 

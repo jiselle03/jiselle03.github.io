@@ -8,6 +8,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build --force",
+    "test:unit": "npm run build && vitest run",
     "build:public": "npm run build && node scripts/strip-public-demos.mjs",
     "preview": "astro preview",
     "deploy": "npm run build:public && gh-pages -d dist --dotfiles"
@@ -17,7 +18,11 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "@types/jsdom": "^30.0.0",
+    "@types/node": "^26.6.4",
     "gh-pages": "^6.3.0",
-    "typescript": "^5.8.3"
+    "jsdom": "^29.1.1",
+    "typescript": "^5.8.3",
+    "vitest": "^5.0.3"
   }
 }
