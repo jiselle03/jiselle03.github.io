@@ -50,6 +50,13 @@ describe('Set demo activity and cancellation contracts', () => {
     expect(source).toContain("get('#cancellation-confirm').addEventListener");
   });
 
+  it('makes schedule days interactive and count-only', () => {
+    expect(source).toContain('data-schedule-day');
+    expect(source).toContain('aria-pressed="${day === activeDay}"');
+    expect(source).toContain("${count} ${count === 1 ? 'class' : 'classes'}");
+    expect(source).toContain('activeDay = Number(button.dataset.scheduleDay)');
+  });
+
   it('keeps admin partner records separate from member support actions', () => {
     expect(source).toContain("get('#admin-record-kicker').textContent = members ? 'Selected member' : 'Selected partner'");
     expect(source).toContain("get('#admin-member-name').textContent = 'Form House'");

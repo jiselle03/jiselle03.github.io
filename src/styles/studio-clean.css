@@ -341,3 +341,11 @@ html[data-theme="light"] .sf-tour-sheet,html[data-theme="light"] .sf-admin-suppo
   .sf-notifications-button,.sf-dialog-close{border:0;box-shadow:none}
   .sf-notifications-panel{top:12.5rem}
 }
+/* Keep the day selector and schedule calendar on the same visual rhythm. */
+.sf-week-day{min-height:5.25rem}
+.sf-calendar-day{min-height:5.25rem;padding:.65rem;color:var(--ice);text-align:left;cursor:pointer}
+.sf-calendar-day[aria-pressed="true"]{border-color:var(--cyan);box-shadow:0 5px 14px var(--shadow)}
+@media(max-width:720px){
+  .sf-week-day{min-height:5rem}
+  .sf-calendar-day{min-height:5rem;padding:.6rem}
+}
