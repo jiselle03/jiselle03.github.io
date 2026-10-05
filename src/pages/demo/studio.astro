@@ -266,7 +266,6 @@ import '../../styles/studio-clean.css';
       get('#admin-start').addEventListener('click', () => { selectedAdminMember = 'alex'; setAdminPanel('members'); renderAdmin(); adminGuideStep = 1; showStudioGuide('Step 1 of 1 · Support credit', 'Add one support credit for Alex. The member balance and activity record will update.', '#admin-credit-adjust'); });
       get('#admin-credit-adjust').addEventListener('click', () => { if (adminGuideStep !== 1) return; adminGuideStep = 0; showStudioGuide('Admin scenario complete', 'Alex’s directory balance and the activity record now reflect the support credit.', '#admin-activity'); });
       document.querySelectorAll<HTMLDialogElement>('#scenario-brief, #studio-brief, #admin-brief').forEach((brief) => brief.close());
-      get('#restart-demo-scenario').addEventListener('click', () => { if (mode === 'member') return; const currentMode = mode; resetScenario(); restoreAdminAndPartnerData(); setMode(currentMode); });
       document.addEventListener('keydown', (event) => { if (event.key !== 'Escape') return; if (!dockPanel.hidden) { dockPanel.hidden = true; dockTab.setAttribute('aria-expanded', 'false'); dockTab.focus(); } if (!get<HTMLElement>('#tour-sheet').hidden) stopGuide(); if (!get<HTMLElement>('#studio-tour-sheet').hidden) stopStudioGuide(); });
     </script>
   </body>

@@ -305,6 +305,8 @@ html[data-theme="light"] .sf-tour-sheet,html[data-theme="light"] .sf-admin-suppo
 .sf-activity{display:grid;gap:0;max-height:18rem;margin:0;padding:0;overflow:auto;list-style:none}
 .sf-activity li{padding:.7rem 0;border-bottom:1px solid var(--line);color:var(--muted);font-size:.75rem;line-height:1.4}
 .sf-activity li:first-child{padding-top:.1rem}
+.sf-admin-record>button{margin:.25rem .4rem .25rem 0}
+.sf-admin-record>button+button{margin-left:.25rem}
 .sf-tour-sheet.is-minimized{width:auto;min-width:0;padding:.25rem;border:0;border-radius:50%;background:transparent;box-shadow:none}
 .sf-tour-sheet.is-minimized .sf-tour-sheet-head{display:block}
 .sf-tour-sheet.is-minimized .sf-tour-sheet-head>div:first-child{display:none}

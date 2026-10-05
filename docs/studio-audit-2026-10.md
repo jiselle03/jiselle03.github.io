@@ -35,6 +35,8 @@
 - All active guides point to real controls and now dismiss via the same Escape path.
 - Dialog close handlers restore focus to the trigger, while view changes focus the new page heading.
 - Activity, schedule, and account surfaces use bounded content and 44px controls rather than relying on hover or fixed desktop-only positioning.
+- Primary actions use cyan, secondary actions use neutral surfaces, and destructive/attention states use pink; adjacent admin actions now have explicit spacing.
+- UI copy stays task-led and specific to the role; fictional/demo disclaimers are retained only where they prevent a mistaken production expectation.
 
 ## Verification
 
