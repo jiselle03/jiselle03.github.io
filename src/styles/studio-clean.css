@@ -260,7 +260,7 @@ html[data-theme="light"] .sf-admin-support-head select,html[data-theme="light"] 
 
 /* Guide controls are quiet utilities; the action below carries the only button weight. */
 .sf-tour-sheet .sf-tour-minimize,.sf-tour-sheet .sf-tour-close{border:0;border-radius:50%;background:transparent;box-shadow:none;color:var(--ice)}
-.sf-tour-sheet .sf-tour-minimize:hover,.sf-tour-sheet .sf-tour-close:hover{background:var(--night-3)}
+.sf-tour-sheet .sf-tour-minimize:hover,.sf-tour-sheet .sf-tour-close:hover{background:transparent}
 
 /* Semantic colors for the intentionally separate portfolio/demo controls. */
 :root{--presentation-ink:#20203a;--presentation-paper:#f3f0e8;--presentation-paper-raised:#fffdfa;--presentation-copy:#586174;--presentation-accent:#3d5cc8;--presentation-line:#20203a;--presentation-signal:#f0cf27;--presentation-backdrop:rgba(32,32,58,.5)}
@@ -280,7 +280,6 @@ html[data-theme="light"] .sf-admin-support-head select,html[data-theme="light"] 
 #scenario-brief .sf-quiet-action,#studio-brief .sf-quiet-action,#admin-brief .sf-quiet-action,#build-notes-dialog .sf-quiet-action{color:var(--presentation-ink);background:var(--presentation-paper);border-color:var(--presentation-line)}
 html[data-theme="light"] .sf-tour-sheet,html[data-theme="light"] .sf-admin-support-head select,html[data-theme="light"] .sf-support-queue button,html[data-theme="light"] .sf-support-record{background:var(--night-2)}
 .sf-signed-in-identity{min-height:44px;cursor:pointer;border:0;padding:.35rem .4rem;color:var(--ice);background:transparent;text-align:left;font:inherit}
-.sf-signed-in-identity::after{content:"⌄";margin-left:.2rem;color:var(--muted);font-size:.8rem}
 .sf-signed-in-identity:hover{background:var(--night-3)}
 .sf-identity-copy{display:grid;gap:.1rem}
 .sf-signed-in-identity>.sf-identity-copy{width:auto;aspect-ratio:auto;place-items:start;color:inherit;background:transparent;border-radius:0;font-weight:inherit}
@@ -291,7 +290,7 @@ html[data-theme="light"] .sf-tour-sheet,html[data-theme="light"] .sf-admin-suppo
 .sf-view[data-view-panel="account"]>.sf-desk-heading{display:grid}
 .sf-account-return{margin:0 0 var(--set-space-4)}
 .sf-dialog-close{border:0;border-radius:50%;box-shadow:none;background:transparent}
-.sf-dialog-close:hover{background:var(--night-3)}
+.sf-dialog-close:hover{background:transparent}
 @media(max-width:720px){.sf-account-preferences{width:100%}.sf-signed-in-identity{max-width:14rem}.sf-identity-copy small{max-width:10rem;overflow-wrap:anywhere}}
 
 /* Final presentation pass: keep related surfaces on the same measure and make the guide unobtrusive when collapsed. */
@@ -313,4 +312,32 @@ html[data-theme="light"] .sf-tour-sheet,html[data-theme="light"] .sf-admin-suppo
 .sf-tour-sheet.is-minimized .sf-tour-sheet-actions{display:block}
 .sf-tour-sheet.is-minimized .sf-tour-minimize{display:grid;width:44px;min-width:44px;min-height:44px;padding:0;border:0;border-radius:50%;color:var(--ice);background:var(--night-3);place-items:center}
 .sf-tour-sheet.is-minimized .sf-tour-close{display:none}
+.sf-header{position:relative}
+.sf-notifications-button{position:relative;display:grid;width:44px;min-width:44px;min-height:44px;padding:0;border:0;border-radius:50%;color:var(--ice);background:transparent;place-items:center}
+.sf-notifications-button:hover,.sf-notifications-button[aria-expanded="true"]{background:transparent}
+.sf-notifications-button svg{width:1.2rem;height:1.2rem;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.8}
+.sf-notification-count{position:absolute;top:.15rem;right:.05rem;display:grid;min-width:1.1rem;height:1.1rem;padding:0 .2rem;border-radius:999px;color:var(--night);background:var(--pink);font-size:.58rem;font-weight:900;place-items:center}
+.sf-notifications-panel{position:fixed;z-index:30;top:5.5rem;right:clamp(1rem,5vw,5rem);width:min(23rem,calc(100vw - 2rem));padding:1rem;border:1px solid var(--line);border-radius:var(--set-radius-sm);color:var(--ice);background:var(--night-2);box-shadow:0 12px 32px var(--shadow)}
+.sf-notifications-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-bottom:.7rem;border-bottom:1px solid var(--line)}
+.sf-notifications-head h2{margin:0;font-size:1rem}
+.sf-notifications-list{display:grid;gap:0;margin:0;padding:0;list-style:none}
+.sf-notifications-list li{display:grid;gap:.25rem;padding:.75rem 0;border-bottom:1px solid var(--line);color:var(--muted);font-size:.72rem;line-height:1.4}
+.sf-notifications-list li:last-child{border-bottom:0;padding-bottom:.1rem}
+.sf-notifications-list strong{color:var(--ice);font-size:.75rem}
+.sf-notifications-list li.is-unread{border-left:3px solid var(--pink);padding-left:.6rem}
 @media (prefers-reduced-motion: reduce){*,*:before,*:after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}}
+@media(max-width:720px){.sf-notifications-panel{top:4.5rem;right:1rem;width:min(23rem,calc(100vw - 2rem))}}
+/* Shared header: keep navigation and identity controls on one desktop rail. */
+@media(min-width:721px){
+  .sf-app{position:relative}
+  .sf-header{position:absolute;z-index:5;top:0;right:0;min-height:6.25rem;padding:0 clamp(1rem,5vw,5rem);border:0;background:transparent;pointer-events:none}
+  .sf-header-context{pointer-events:auto}
+  .sf-member-nav{position:absolute;z-index:4;top:1.7rem;left:clamp(18rem,27vw,30rem);padding:0;border:0;background:transparent}
+  .sf-admin-nav{left:clamp(18rem,27vw,30rem)}
+  .sf-notifications-panel{top:6.75rem}
+  .sf-notifications-button,.sf-dialog-close{border:0;box-shadow:none}
+}
+@media(max-width:720px){
+  .sf-notifications-button,.sf-dialog-close{border:0;box-shadow:none}
+  .sf-notifications-panel{top:12.5rem}
+}
