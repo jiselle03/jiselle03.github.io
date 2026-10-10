@@ -13,8 +13,9 @@ All names, studios, schedules, balances, support requests, and activity are inve
 | Member — Explore | Browse and filter the weekly class catalog, inspect class and studio details, book with fictional credits, join a waitlist, or save a studio locally. |
 | Member — Schedule | Review the booking, see its cancellation cutoff, cancel it, and observe whether credits are returned. A reminder preference is a local demo setting, not a notification. |
 | Member — Account | Open from the name/avatar in the top-right header (not a workspace tab). Edit Alex’s fictional profile for the current page session, switch theme, and inspect non-interactive password/payment previews. |
-| Partner — Classes and roster | Add, edit, cancel, or manually enroll in a fictional session; remove an existing enrollee; inspect availability and roster changes. Manual enrollment is limited to members already associated with that studio. Schedule conflicts are checked locally. |
-| Partner — Staff and roles | Change a fictional staff role and see the permission summary update for that organization. |
+| Partner — Classes | Add, edit, or cancel a fictional session; inspect attendance, availability, and recent studio activity. |
+| Partner — Members | Review repeat members with bookings at Form House and open the relevant class roster to manage an enrollment. The directory is derived from Form House bookings only; no Set-wide member search is exposed. |
+| Partner — Staff | Change fictional staff roles and preview Partner Admin, Front Desk, or Trainer access. These are prototype affordances, not security controls. |
 | Partner — Account | Open from the name/avatar. Review Jordan Lee’s fictional Form House identity, Partner Admin role, and organization-scoped access; return to the partner desk from the account view. |
 | Admin — Overview | Compare fictional platform totals across 30- and 90-day ranges. Charts and labels follow the selected range. |
 | Admin — Members | Inspect sample member records, add a support credit where allowed, and toggle a member’s demo status. |
@@ -25,18 +26,18 @@ All names, studios, schedules, balances, support requests, and activity are inve
 
 ## Shared behavior and limits
 
-Bookings, seat availability, partner rosters, credit balance, and activity are coordinated in the current page session. Guided tasks point to actual controls, wait for the visitor to act, can be dismissed, and can be restarted. Use the role switch or `?role=partner` / `?role=admin` to open a role-specific starting view.
+Bookings, seat availability, partner rosters, credit balance, and activity are coordinated in the current page session. Guided tasks point to actual controls, wait for the visitor to act, can be dismissed, and can be restarted. Use the role switch or `?role=partner` / `?role=admin` to open and refresh into a role-specific starting view. The Set wordmark returns to the first section in the current workspace: Explore, Classes, or Overview. Member sees “Membership network,” Partner sees “Studio operations,” and Admin sees “Platform operations” with a restrained accent strip to mark the internal Set console.
 
 The notification bell is a role-specific preview: members see enrollment approvals and booking changes, partners see meaningful studio-level approvals or class changes, and admins see escalations and access reviews. It is fictional local copy, not a live notification service.
 
-For a production enrollment flow, a partner-created seat is held for 24 hours and requires member approval. No response releases the hold; it is never treated as silent approval. A studio can remove a member’s self-booked seat for that studio, with a credit outcome and member notification recorded.
+Partner-assisted enrollment places a 24-hour seat hold and asks the member to approve or decline from the notification panel. Approval confirms the booking and charges credits; decline or expiry releases the seat without charge. The demo also offers a waitlisted member a 24-hour acceptance window rather than silently booking them. A studio can remove a member’s self-booked seat for that studio; the member sees the local outcome and any eligible credit return. These are local scenario transitions, not live messages or account services.
 
 ### Enrollment rules
 
 - Members can book available classes themselves.
 - Partners can manage enrollment only for their own studio.
 - Manual partner enrollment is limited to repeat members already associated with that studio; it does not expose the full Set member database.
-- A partner-created enrollment is a 24-hour hold until the member approves it. Approval keeps the seat; denial or expiry releases it.
+- A partner-created enrollment is a 24-hour hold until the member approves it. Approval keeps the seat and charges credits; decline or expiry releases it. No response is not consent.
 - A studio may remove a member’s self-booked seat when needed. The member is notified and the credit outcome is recorded.
 
 ### Notification rules
@@ -50,4 +51,4 @@ This is a product concept demo, not a production-ready service. Real identity, a
 
 ## Publishing note
 
-Keep `/demo/*` excluded from the public portfolio build until publishing is explicitly approved in the project instructions. Build locally with `npm run build`; do not deploy from this demo task.
+Set Studio is approved for public release at `/demo/studio/`. The public build includes that route and continues to exclude other demo routes until separately approved. Build locally with `npm run build`; publish through the portfolio deploy workflow.

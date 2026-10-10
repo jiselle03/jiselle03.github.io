@@ -1,3 +1,8 @@
-import { rm } from 'node:fs/promises';
+import { readdir, rm } from 'node:fs/promises';
 
-await rm(new URL('../dist/demo', import.meta.url), { force: true, recursive: true });
+const publicDemoDirectory = new URL('../dist/demo/', import.meta.url);
+for (const entry of await readdir(publicDemoDirectory, { withFileTypes: true })) {
+  if (entry.name !== 'studio') {
+    await rm(new URL(`${entry.name}/`, publicDemoDirectory), { force: true, recursive: true });
+  }
+}
