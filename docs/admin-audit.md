@@ -22,11 +22,11 @@ Build verification: `npm run build` passes with 0 errors, warnings, or hints.
 - Members and Partners as top-level admin navigation destinations.
 - Member directory with selected-record support actions.
 - Partner enable/disable controls.
-- Admin/Operator role table.
+- Admin full-access baseline and editable Operator view/edit permissions.
 - Local activity history and live status feedback.
 - Local credit adjustment and member enable/disable actions.
 - Support queue with selectable cases, ownership/state context, and local resolution feedback.
-- Operator context that visibly blocks credit changes while preserving review access.
+- Support actions run as the signed-in Set Admin; there is no role selector or Operator impersonation.
 
 ## Remaining admin capabilities
 

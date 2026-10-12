@@ -48,18 +48,36 @@ Feature: Changing a booking
     And no refund ledger entry is created
     And the member sees the applicable outcome before confirming
 
-  Scenario: A waitlisted member is promoted after a seat opens
+  Scenario: A waitlisted member is offered the released seat
     Given an occurrence is full and two members are on its active waitlist in rank order
     When a confirmed enrollment is cancelled
-    Then the first still-eligible waitlist entry is promoted once
-    And its member receives one confirmed enrollment and one ledger debit
-    And the next entry remains active
+    Then the first waitlist entry receives a 24-hour approval offer
+    And the seat remains held without charging credits until acceptance
+    And the next entry remains queued
+
+  Scenario: An offer expires and advances the queue
+    Given the first waitlisted member has an unaccepted 24-hour offer
+    When the offer expires
+    Then the offer is marked expired and the seat is released
+    And the next eligible waitlist entry receives an approval offer
+
+  Scenario: A partner-assisted enrollment needs member approval
+    Given a partner requests a seat for a repeat member at their own studio
+    When the request is created
+    Then the seat is held for 24 hours without a credit debit
+    And the member must explicitly approve before the enrollment is confirmed
+    And decline or timeout releases the seat without charging credits
 ```
 
 ## Scheduling and operations
 
 ```gherkin
 Feature: Partner scheduling
+
+  Scenario: A partner adds a one-off session
+    Given a manager is authorized for a studio
+    When the manager publishes a one-time session on a selected date
+    Then only that dated occurrence appears in member availability and the partner roster
 
   Scenario: A manager adds a recurring class without a conflict
     Given a manager is authorized for a studio
@@ -124,4 +142,18 @@ Feature: Calendar access
     When the operations admin changes a platform support role
     Then the change affects only Set platform staff assignments
     And no partner-owned role definition or staff assignment is changed
+
+  Scenario: Platform Admin configures Operator rights without impersonating them
+    Given Priya is signed in as a Set platform Admin
+    When she changes Operator view or edit permissions
+    Then the permission configuration is saved for the Operator role
+    And the current session remains signed in as Admin
+    And Admin retains full platform permissions
+
+  Scenario: Partner Admin configures staff permissions within their studio
+    Given Jordan is signed in as the Form House Partner Admin
+    When Jordan changes Front Desk or Trainer permissions
+    Then the grants apply only to Form House staff roles
+    And Jordan remains signed in as Partner Admin
+    And no Set platform role or another partner’s permissions are changed
 ```

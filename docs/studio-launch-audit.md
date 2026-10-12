@@ -9,7 +9,7 @@ Scope: static/code audit of `/demo/studio/`, its bundled CSS/JS, and the local b
 | --- | ---: | --- |
 | Accessibility | 4/4 | Native labeled controls, dialog labels and close controls, return-focus handling, live status region, reduced-motion rules, stable theme-toggle pressed semantics, and corrected selected-day semantics. Theme text pair contrast checked at 4.76:1 or better for muted/accent body labels (light theme) and 5.41:1 or better for the pink accent. |
 | Performance | 4/4 | Static, dependency-light page with no images, external assets, API requests, or continuous/layout animations. Built HTML/CSS/JS are about 143 KB total before compression. |
-| Responsive design | 4/4 | Mobile/tablet/desktop breakpoints; phone sheets; single-column layouts; partner permissions switch to stacked rows rather than overflow; dock and directory controls meet 44px minimum targets. |
+| Responsive design | 4/4 | Mobile/tablet/desktop breakpoints; phone sheets; single-column layouts; permission matrices remain semantic tables with wrapped headers and fitted columns on narrow screens; dock and directory controls meet 44px minimum targets. |
 | Theming | 4/4 | Dark/light semantic product tokens, explicit color-scheme values, contrast-adjusted light accents, and a separately tokenized demo/presentation surface. |
 | Anti-patterns | 4/4 | Active page uses an intentional roster/workspace visual language; no fake photography, active decorative gradients, stacked metric wall, or generic AI copy. |
 | **Total** | **20/20** | **Excellent by the code-audit rubric.** |

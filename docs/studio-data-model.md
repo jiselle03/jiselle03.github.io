@@ -77,7 +77,7 @@ Consumer membership is intentionally separate from staff access. `memberships.me
 | Partner | Jordan Lee | `Partner Admin` at Form House | Form House classes, rosters, staff assignments, and Form House role definitions only. |
 | Admin | Priya Shah | `Admin` at Set platform | All fictional member accounts, partner records, Set staff assignments, platform role definitions, organization records, and audit history. |
 
-The static demo switches these contexts locally. A production system would derive the context from the authenticated user, organization membership, and a permission check on every read and write.
+The static demo switcher changes among the Member, Partner Admin, and Set Admin scenarios locally. It does not impersonate a Set Operator or a lower-scoped partner staff user: Admin configures Operator grants on Roles, and Jordan configures Form House staff grants on Staff while remaining Partner Admin. A production system would derive context from the authenticated user, organization membership, and a permission check on every read and write.
 
 ## Memberships and credits
 

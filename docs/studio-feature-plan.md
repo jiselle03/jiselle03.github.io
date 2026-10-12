@@ -5,58 +5,38 @@ This plan borrows the tutoring portal’s useful product patterns: explicit book
 ## Current baseline
 
 - The page has Member, Partner, and Admin views with local scenario state.
+- Self-directed Member entry can load a linked example week with a confirmed group class, a partner approval hold, and a waitlist entry; the guided flow remains a clean booking exercise.
 - Partner roster visibility is scoped to Form House. The role preview distinguishes Partner Admin, Front Desk, and Trainer.
-- Pure policy helpers and unit tests now define multi-booking eligibility and partner-assisted 24-hour approval holds.
-- Partner enrollment and waitlist offers now create a 24-hour pending hold; the member can accept or decline from the notification panel, and credits are charged only on acceptance. The demo still uses one active waitlist slot and retains `bookingId` as a compatibility pointer to the latest confirmed enrollment; cross-view checks need stronger integration coverage.
+- Enrollment records are keyed to dated occurrences. Weekly class definitions support one-off dates and occurrence-level cancellation exceptions.
+- Members can keep multiple bookings, see dated confirmed/pending/waitlisted/past states on the selected Schedule day, and cancel one occurrence without deleting its history.
+- Partner-assisted enrollment is limited to the represented repeat member, reserves a seat for 24 hours, and requires affirmative approval. Credits are charged only on approval; decline or expiry releases the seat.
+- Waitlists have per-occurrence ordering. When a seat opens, the next entry receives a 24-hour approval offer; rejection/expiry leaves history and advances the queue.
+- Partners see date-filtered rosters and can remove a member booking for their own studio. Admin credit and enrollment corrections require a reason and appear in local activity.
+- Pure policy helpers cover occurrence generation, role × action × studio scope, repeat-member eligibility, approval transitions, queue ordering, retained removal outcomes, and reasoned credit adjustments.
+- This is still an interaction prototype, not a secure policy implementation. Class capacity and seeded attendance are simplified local fixtures; there is no durable audit log, server concurrency control, or persistent state.
 
-## Proposed sequence
+## Remaining product slices
 
-### 1. One enrollment record, multiple classes
+### 1. Occurrence and policy hardening
 
-Represent each member/session relationship as an enrollment record with `sessionId`, `memberId`, `studioId`, `status`, `createdBy`, `creditsCharged`, `creditsReturned`, `createdAt`, `expiresAt`, and `reason`. Start with `confirmed`, `pending-member-approval`, `waitlisted`, `cancelled`, and `expired`.
+- Expand weekly definitions into a visible bounded date range rather than interpreting them from weekday fields at render time.
+- Capture the cancellation policy and class price on each enrollment so later class edits cannot rewrite an existing booking’s terms.
+- Keep capacity and roster totals occurrence-based across member, partner, cancellation, waitlist, and admin correction flows; seeded attendance remains simplified local fixture data.
+- Validate schedule conflicts against actual local start/end datetimes, including sessions crossing midnight and daylight-saving boundaries if new regions are added.
 
-Members may hold multiple confirmed bookings if they have enough credits and sessions do not overlap in the same local week. A class may appear only once for the same member. Capacity is reserved by confirmed enrollments and unexpired approval holds. The Schedule day count and class cards derive from those records; no separate counters should be edited by hand.
+### 2. Better role rules and operations
 
-### 2. Member self-booking and assisted enrollment
+- Add assignment-aware Trainer access (classes assigned, not every studio roster) and clear “not allowed” feedback.
+- Give Partner Admin a small request/review queue for enrollment and cancellation exceptions without exposing platform-wide member status.
+- Add explicit Admin support cases and a reasoned approval path for sensitive actions, keeping member status changes platform-only.
+- Scope notification history to the action and actor, and allow the visitor to mark items read for a more realistic local flow.
 
-- Self-booking an available class confirms immediately and deducts credits.
-- A partner can request enrollment only for a repeat member associated with that studio, not search the full Set directory.
-- The request holds one seat for 24 hours. The member must approve to confirm and charge credits. Decline or expiry releases the seat; silence is not consent. The frontend demo wires this flow for its one represented repeat member (Alex), not a full member directory.
-- Do not offer a manual-enroll route that bypasses the member decision. Show pending status and expiry to Partner; show approve/decline controls to the relevant member.
-- Waitlist promotion should be a time-limited offer, not silent enrollment. Charge credits only after acceptance; expiry advances the queue.
+### 3. Integration and resilience coverage
 
-### 3. Studio permissions and enrollment operations
-
-Keep a small explicit permission matrix:
-
-| Action | Partner Admin | Front Desk | Trainer | Set Admin |
-| --- | --- | --- | --- | --- |
-| View own studio schedule and roster | Yes | Yes | Assigned classes | All studios |
-| Request repeat-member enrollment | Yes | Yes | No | Override with reason |
-| Remove an enrollee from own class | Yes | Yes | No | Override with reason |
-| Create/edit/cancel studio class | Yes | No | No | Override with reason |
-| Change studio staff roles | Yes | No | No | Set access only |
-| Cross-studio action | No | No | No | Yes, with reason |
-
-Every handler checks role and studio scope, not only whether a button is disabled. For the demo, the role preview may simulate the acting staff account. Explain in docs that frontend checks are not secure authorization in a real service.
-
-Roster removal must create an enrollment outcome: who removed the member, why, whether credits were returned, and a member-facing notification. Apply the same rule for studio cancellation across every affected enrollment.
-
-### 4. Admin support and controlled overrides
-
-Add a compact request → review → approve/deny flow for exceptional credit adjustments and enrollment corrections. Require a reason, show the affected member/studio, and append an immutable-looking local activity item with actor and decision. Admin can enable/disable member and partner demo access; partner staff can only manage their own studio. Avoid allowing Admin to invisibly rewrite records.
-
-### 5. Cross-view feedback and reset
-
-Derive Member Schedule, Partner roster, Admin search/history, activity, credits, capacity, and relevant notifications from the same local records. Reset must restore every store, including notifications, role preview, filters, selected day, pending holds, and support cases. Keep notification volume scoped: members receive their own decisions and changes; partners receive studio-level events and outcomes, not every routine enrollment; Admin receives escalations and access/support exceptions.
-
-## Test gates
-
-1. Unit: credits, capacity/holds, duplicate prevention, overlap boundaries, cancellation cutoff, waitlist offer acceptance/expiry, and role × action × studio matrix.
-2. Transition: self-book/cancel, assisted request/approve/decline/expire, studio removal, class cancellation, admin override request/decision.
-3. Cross-view: assert the same local enrollment and balance in Explore, Schedule, Partner roster, notifications, activity, and Admin history after each transition.
-4. Resilience: reset while each pending state exists; long names; empty roster; full class; low credits; same-time conflicts; date boundaries.
-5. UX release check: keyboard-only flows, focus return and Escape, screen-reader labels/announcements, 320px phone, tablet, desktop, 200% zoom, and reduced motion.
+- DOM-level tests now carry a Partner hold through Member approval, credit deduction, and the Partner roster; a sample-activity test also covers confirmed, pending, and waitlisted records across the rendered schedule. Extend this coverage to independent dates of the same weekly class, cancellation of one occurrence, multiple simultaneous holds, and waitlist advancement by exact occurrence.
+- Verify admin adjustments, status changes, and enrollment corrections retain actor + reason in every affected surface.
+- Reset while each pending state exists; cover long names, empty roster, full occurrence, low credits, same-time conflicts, and dates crossing a week boundary.
+- Before calling the demo launch-ready, do a browser pass for keyboard-only use, dialog focus/Escape, screen-reader announcements, 320px phone, tablet, desktop, 200% zoom, and reduced motion. Current automated checks are code/build-level; they do not replace this manual pass.
 
 ## Deliberate product decisions
 
